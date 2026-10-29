@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>师作 TeachDo · 备课上下文装配</title>
+<link rel="stylesheet" href="teachdo.css">
+<style>
+  .src{border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;margin-bottom:9px;background:transparent}
+  .src-head{display:flex;align-items:center;gap:9px;padding:9px 12px;background:var(--well);border-bottom:1px solid var(--line-soft)}
+  .src-st{font-size:11px;font-weight:800;letter-spacing:.06em;padding:1px 6px;border-radius:var(--r-xs);border:1px solid var(--line);color:var(--txd)}
+  .src-st.ok{color:var(--ok);border-color:rgba(62,207,149,.4)}
+  .src-st.run{color:var(--accent-text);border-color:var(--accent-ink)}
+  .src-body{padding:10px 12px}
+  .quote{font-size:12.5px;line-height:1.75;color:var(--tx2);padding-left:10px;border-left:1px solid var(--line-strong)}
+  .cite{font-size:11px;color:var(--txd);margin-top:6px;letter-spacing:.02em}
+  .cite b{color:var(--tx3);font-weight:560}
+  .hit{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line-soft)}
+  .hit:last-child{border-bottom:none}
+  .hit-n{font-size:11px;font-weight:800;color:var(--txd);width:16px;flex:none;padding-top:2px}
+  .hit-t{font-size:13px;font-weight:660;color:var(--tx1)}
+  .hit-m{font-size:11px;color:var(--txd);margin-top:2px}
+  .tag-skel{font-size:10px;color:var(--txd);border:1px solid var(--line);border-radius:var(--r-xs);padding:0 4px;flex:none;margin-top:2px}
+</style>
+</head>
+<body>
+
+<nav class="preview-nav">
+  <span class="pv-tag">预览</span>
+  <a href="index.html">首页</a>
+  <a href="new.html">新建备课</a>
+  <a href="context.html" class="on">上下文装配</a>
+  <a href="lesson.html">教案</a>
+  <a href="ppt.html">课件</a>
+  <a href="script.html">讲稿</a>
+  <a href="review.html">冷读评审</a>
+  <a href="export.html">导出</a>
+  <a href="design.html">设计规范</a>
+</nav>
+
+<div class="app">
+  <header class="titlebar">
+    <div class="brand"><div class="brand-mark">师</div>师作 TeachDo <span class="brand-sub">背影 · 初二语文</span></div>
+    <div class="tb-right"><span class="tb-sep"></span><button class="tb-btn">—</button><button class="tb-btn">▢</button><button class="tb-btn">✕</button></div>
+  </header>
+
+  <div class="main">
+
+    <aside class="pane pane-files">
+      <div class="pane-head">装配进度</div>
+      <div class="pane-body gcol" style="gap:9px">
+        <div class="src" style="margin:0">
+          <div class="src-head"><span class="src-st ok">完成</span><span class="small mut">课题解析</span></div>
+          <div class="src-body" style="padding-top:8px;padding-bottom:8px">
+            <div class="cap">初二 · 语文 · 第五单元 · 第 2 课时 · 45 分钟</div>
+          </div>
+        </div>
+        <div class="src" style="margin:0">
+          <div class="src-head"><span class="src-st ok">完成</span><span class="small mut">课标对齐</span><span class="sp"></span><span class="cap">7 条</span></div>
+          <div class="src-body" style="padding-top:8px;padding-bottom:8px"><span class="cap">义务教育语文课标 · 第四学段 · 阅读与鉴赏</span></div>
+        </div>
+        <div class="src" style="margin:0">
+          <div class="src-head"><span class="src-st ok">完成</span><span class="small mut">公开课检索</span><span class="sp"></span><span class="cap">14 份</span></div>
+          <div class="src-body" style="padding-top:8px;padding-bottom:8px"><span class="cap">已入库 14 份教学环节骨架</span></div>
+        </div>
+        <div class="src" style="margin:0">
+          <div class="src-head"><span class="src-st run">进行中</span><span class="small mut">课件风格匹配</span></div>
+          <div class="runner" style="margin:0 12px 10px;border-radius:2px"></div>
+        </div>
+        <div class="src" style="margin:0;opacity:.55">
+          <div class="src-head"><span class="src-st">等待</span><span class="small mut">学情适配</span></div>
+        </div>
+      </div>
+      <div style="padding:var(--pad);border-top:1px solid var(--line-soft)">
+        <div class="cap" style="line-height:1.7">装配产物（ContextPackage）会带着全部出处一起流到教案生成，教师可随时点开核对。</div>
+      </div>
+    </aside>
+
+    <section class="pane pane-main">
+      <div class="pane-head">出处与依据 <span class="sp"></span>
+        <span class="chip on">课标 7</span><span class="chip on">公开课 14</span><span class="chip on">课件风格 9</span>
+      </div>
+      <div class="pane-body" style="padding:16px 20px">
+
+        <div class="src">
+          <div class="src-head">
+            <span class="src-st ok">课标依据</span>
+            <span class="small mut">义务教育语文课程标准（2022 年版）· 第四学段</span>
+            <span class="sp"></span><span class="cap">引用 3 / 7</span>
+          </div>
+          <div class="src-body">
+            <div class="quote">
+              「第四学段（7–9 年级）学生应能<b>整体感知课文内容</b>，联系上下文和生活经验理解词句含义，把握文章主要内容；<b>在阅读中揣摩文章的表达效果</b>，体会作者蕴含其中的情感态度。」
+            </div>
+            <div class="cite"><b>出处</b>：2022 版义务教育语文课标 · 第二部分 · 学段目标 · 阅读与鉴赏 ·（一）阅读 · 第 3 条</div>
+
+            <div class="quote" style="margin-top:10px">
+              「<b>评价学生是否认真地读完了课文</b>，是否对课文感兴趣，是否能说出自己读后的感受；能在交流中说出自己的看法，允许有不同意见。」
+            </div>
+            <div class="cite"><b>出处</b>：2022 版义务教育语文课标 · 第三部分 · 学业质量 · 阅读与鉴赏 ·（二）课堂表现 · 第 12 条</div>
+
+            <div class="quote" style="margin-top:10px">
+              「教学评价应关注<b>学生学习过程</b>与学习结果，评价方式应体现<b>多样性、综合性</b>，注重激励与发展。」
+            </div>
+            <div class="cite"><b>出处</b>：2022 版义务教育语文课标 · 第三部分 · 教学建议 · 第 3 条</div>
+
+            <div style="margin-top:10px"><span class="chip">＋ 展开其余 4 条</span></div>
+          </div>
+        </div>
+
+        <div class="src">
+          <div class="src-head">
+            <span class="src-st ok">公开课参考</span>
+            <span class="small mut">全网检索 · 只取教学结构，不取原文</span>
+            <span class="sp"></span><span class="cap">14 份 · 相似度 4%</span>
+          </div>
+          <div class="src-body">
+            <div class="hit">
+              <div class="hit-n">01</div>
+              <div style="flex:1;min-width:0">
+                <div class="hit-t">《背影》公开课 · 情境导入 + 品读四次买橘子</div>
+                <div class="hit-m">环节骨架：音频导入 → 初读感知 → 细节品读（4 处）→ 情感体验 → 开放结尾 · 学生提问占比 高</div>
+              </div>
+              <span class="tag-skel">结构借鉴</span>
+            </div>
+            <div class="hit">
+              <div class="hit-n">02</div>
+              <div style="flex:1;min-width:0">
+                <div class="hit-t">《背影》同课异构 · 问题链驱动型</div>
+                <div class="hit-m">环节骨架：悬念设问 → 逐段剥离 → 对比朗读 → 主旨归纳 · 板书为情感坐标轴</div>
+              </div>
+              <span class="tag-skel">结构借鉴</span>
+            </div>
+            <div class="hit">
+              <div class="hit-n">03</div>
+              <div style="flex:1;min-width:0">
+                <div class="hit-t">《背影》复习课 · 细节描写专题</div>
+                <div class="hit-m">环节骨架：概念辨析 → 例句拆解 → 学生仿写 → 当堂点评</div>
+              </div>
+              <span class="tag-skel">结构借鉴</span>
+            </div>
+            <div class="hit">
+              <div class="hit-n">…</div>
+              <div style="flex:1;min-width:0">
+                <div class="hit-t">其余 11 份 · 按环节相似度排序</div>
+                <div class="hit-m">点击展开，可单条「排除」——排除后重跑生成时不会再引用</div>
+              </div>
+              <span class="tag-skel">可排除</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="src">
+          <div class="src-head">
+            <span class="src-st ok">课件风格</span>
+            <span class="small mut">素雅纸本 · 版式与配色参考</span>
+            <span class="sp"></span><span class="cap">9 套</span>
+          </div>
+          <div class="src-body">
+            <div style="display:flex;gap:9px">
+              <div style="flex:1;height:74px;background:var(--well);border:1px solid var(--line);border-radius:var(--r-sm);padding:8px;display:flex;flex-direction:column;gap:6px">
+                <div style="height:3px;background:#5567c0;width:34%"></div>
+                <div style="height:6px;background:#3c4452;width:66%"></div>
+                <div style="height:4px;background:#b8c0cc;width:88%"></div>
+                <div style="height:4px;background:#b8c0cc;width:74%"></div>
+              </div>
+              <div style="flex:1;height:74px;background:var(--well);border:1px solid var(--line);border-radius:var(--r-sm);padding:8px;display:flex;flex-direction:column;gap:6px">
+                <div style="height:3px;background:#c9743a;width:44%"></div>
+                <div style="height:6px;background:#3a3128;width:58%"></div>
+                <div style="height:4px;background:#c4b6a4;width:80%"></div>
+                <div style="height:4px;background:#c4b6a4;width:62%"></div>
+              </div>
+              <div style="flex:1;height:74px;background:var(--well);border:1px solid var(--line);border-radius:var(--r-sm);padding:8px;display:flex;flex-direction:column;gap:6px">
+                <div style="height:3px;background:#1f6feb;width:30%"></div>
+                <div style="height:6px;background:#e6edf3;width:70%"></div>
+                <div style="height:4px;background:#3b4653;width:84%"></div>
+                <div style="height:4px;background:#3b4653;width:52%"></div>
+              </div>
+            </div>
+            <div class="cite">只取版式节奏、字号层级与配色，不复制任何具体页面。</div>
+          </div>
+        </div>
+
+        <div class="src" style="margin-bottom:0">
+          <div class="src-head"><span class="src-st">安全预检</span><span class="small mut">输入闸</span><span class="sp"></span><span class="cap" style="color:var(--ok)">通过</span></div>
+          <div class="src-body" style="padding-top:9px;padding-bottom:9px">
+            <div class="cap">教材原文为公有领域 · 无涉敏内容 · 无学生个人信息 · 无应试泄题风险</div>
+          </div>
+        </div>
+
+      </div>
+      <div style="flex:none;display:flex;align-items:center;gap:9px;padding:var(--pad);border-top:1px solid var(--line-soft)">
+        <button class="btn btn-quiet">排除某些参考</button>
+        <button class="btn">重新装配</button>
+        <span class="sp"></span>
+        <span class="cap">4 / 5 已完成</span>
+        <a class="btn btn-primary" href="lesson.html">生成教案 →</a>
+      </div>
+    </section>
+
+    <aside class="pane pane-ai">
+      <div class="pane-head">学情适配 <span class="sp"></span> <span class="badge">进行中</span></div>
+      <div class="pane-body gcol">
+        <div class="runner"></div>
+
+        <div class="card">
+          <div class="cap" style="margin-bottom:8px">自动画像（可覆盖）</div>
+          <div class="gcol" style="gap:7px">
+            <div style="display:flex;gap:8px"><span class="cap" style="width:64px;flex:none">理解力</span><span class="small mut">能把握主旨，细节归纳弱</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:64px;flex:none">用词上限</span><span class="small mut">不出现「沁人心脾」类词</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:64px;flex:none">例证尺度</span><span class="small mut">生活化，避开暴力与成人化</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:64px;flex:none">互动方式</span><span class="small mut">朗读 + 同桌交流为主</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:64px;flex:none">篇幅上限</span><span class="small mut">环节不超过 6 个</span></div>
+          </div>
+          <div style="margin-top:10px"><span class="chip on">✓ 使用自动画像</span> <span class="chip">手动改写</span></div>
+        </div>
+
+        <div class="card">
+          <div class="cap" style="margin-bottom:8px">装配小结</div>
+          <div class="gcol" style="gap:6px">
+            <div style="display:flex;gap:8px"><span class="cap" style="width:60px;flex:none">课标</span><span class="small mut">7 条 · 全部带出处</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:60px;flex:none">公开课</span><span class="small mut">14 份 · 结构级</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:60px;flex:none">风格</span><span class="small mut">素雅纸本 · 9 套</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:60px;flex:none">最长相似度</span><span class="small mut">4%（阈值 25%）</span></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="statusbar">
+    <span>Stage 0 · 上下文装配</span>
+    <span class="grow"></span>
+    <span class="stamp draft"><span class="stamp-line"></span><span class="stamp-label">装配进行中</span></span>
+  </footer>
+</div>
+</body>
+</html>

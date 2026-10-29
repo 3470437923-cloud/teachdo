@@ -1,0 +1,13 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "师作 TeachDo 主窗口能力集。前端只用到 @tauri-apps/api/window 的五个窗口控制命令（src/ui/winctl.ts），自定义命令 ai_chat / ai_models / export_save 由 lib.rs 的 invoke_handler 注册，不受 ACL 限制，因此这里不列。",
+  "windows": ["main"],
+  "permissions": [
+    "core:window:default",
+    "core:window:allow-close",
+    "core:window:allow-minimize",
+    "core:window:allow-toggle-maximize",
+    "core:window:allow-start-dragging"
+  ]
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>师作 TeachDo · 导出</title>
+<link rel="stylesheet" href="teachdo.css">
+<style>
+  .pkg{border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;background:transparent}
+  .pkg-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .pkg-ic{width:34px;height:34px;border-radius:var(--r-sm);background:var(--well);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
+  .pkg-name{font-size:14px;font-weight:700}
+  .pkg-sub{font-size:11.5px;color:var(--txd);margin-top:1px}
+  .pkg-badge{margin-left:auto}
+  .pkg-files{display:flex;flex-direction:column;gap:5px;padding-left:2px}
+  .pf{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--tx2);padding:5px 8px;border-radius:var(--r-xs)}
+  .pf:hover{background:var(--ctl-fill)}
+  .pf .pf-ic{width:14px;flex:none;color:var(--txd);font-size:12px;text-align:center}
+  .pf .pf-sz{margin-left:auto;font-size:11px;color:var(--txd);font-variant-numeric:tabular-nums}
+  .opt{display:flex;align-items:center;gap:9px;padding:9px 10px;border:1px solid var(--line);border-radius:var(--r-sm);cursor:pointer}
+  .opt.on{border-color:var(--accent-ink);background:var(--accent-soft)}
+  .opt input{width:14px;height:14px;accent-color:var(--accent-fill)}
+  .opt-name{font-size:13px;font-weight:660}
+  .opt-sub{font-size:11px;color:var(--txd);margin-top:1px}
+</style>
+</head>
+<body>
+
+<nav class="preview-nav">
+  <span class="pv-tag">预览</span>
+  <a href="index.html">首页</a><a href="new.html">新建备课</a><a href="context.html">上下文装配</a>
+  <a href="lesson.html">教案</a><a href="ppt.html">课件</a><a href="script.html">讲稿</a>
+  <a href="review.html">冷读评审</a><a href="export.html" class="on">导出</a><a href="design.html">设计规范</a>
+</nav>
+
+<div class="app">
+  <header class="titlebar">
+    <div class="brand"><div class="brand-mark">师</div>师作 TeachDo <span class="brand-sub">背影 · 导出</span></div>
+    <div class="tb-right"><button class="tb-btn">◧</button><button class="tb-btn">◨</button><span class="tb-sep"></span><button class="tb-btn">⚙</button><span class="tb-sep"></span><button class="tb-btn">—</button><button class="tb-btn">▢</button><button class="tb-btn">✕</button></div>
+  </header>
+
+  <div style="flex:none;padding:9px 9px 0;background:var(--canvas)">
+    <div class="ticket">
+      <div class="t-part solid"><div class="t-no">壹 · 教案</div><div class="t-name">已定稿</div><div class="t-state">可导出</div><div class="t-underline"></div></div>
+      <div class="t-link"></div>
+      <div class="t-part solid"><div class="t-no">贰 · 课件</div><div class="t-name">已定稿</div><div class="t-state">可导出</div><div class="t-underline"></div></div>
+      <div class="t-link"></div>
+      <div class="t-part solid"><div class="t-no">叁 · 讲稿</div><div class="t-name">已定稿</div><div class="t-state">可导出</div><div class="t-underline"></div></div>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <aside class="pane pane-files">
+      <div class="pane-head">打包方式</div>
+      <div class="pane-body gcol">
+        <div class="opt on">
+          <input type="radio" name="pkg" checked>
+          <div>
+            <div class="opt-name">合并打包 · 一份压缩包</div>
+            <div class="opt-sub">三件套 + 引用清单 + 教学设计说明，一次带走</div>
+          </div>
+        </div>
+        <div class="opt">
+          <input type="radio" name="pkg">
+          <div>
+            <div class="opt-name">分开保存 · 三份独立文件</div>
+            <div class="opt-sub">教案 / 课件 / 讲稿 各自存放，便于单发</div>
+          </div>
+        </div>
+
+        <hr class="hairline">
+        <div class="cap" style="margin-bottom:6px">导出格式</div>
+        <div class="gcol" style="gap:6px">
+          <div class="opt on"><input type="checkbox" checked><div><div class="opt-name" style="font-size:12.5px">PowerPoint .pptx</div><div class="opt-sub">课件 · 在 WPS / Office 可再编辑</div></div></div>
+          <div class="opt on"><input type="checkbox" checked><div><div class="opt-name" style="font-size:12.5px">Word .docx</div><div class="opt-sub">教案 + 讲稿 · 含批注与出处</div></div></div>
+          <div class="opt"><input type="checkbox"><div><div class="opt-name" style="font-size:12.5px">PDF .pdf</div><div class="opt-sub">只读版 · 用于存档或分享</div></div></div>
+        </div>
+
+        <hr class="hairline">
+        <div class="cap" style="margin-bottom:6px">附带材料</div>
+        <div class="gcol" style="gap:6px">
+          <div class="opt on"><input type="checkbox" checked><div><div class="opt-name" style="font-size:12.5px">引用清单</div><div class="opt-sub">课标条目 + 公开课参考 + 课件风格来源</div></div></div>
+          <div class="opt on"><input type="checkbox" checked><div><div class="opt-name" style="font-size:12.5px">一页纸教学设计说明</div><div class="opt-sub">教研组长版 · 含学法与意图</div></div></div>
+          <div class="opt"><input type="checkbox"><div><div class="opt-name" style="font-size:12.5px">冷读评审报告</div><div class="opt-sub">供教研组评议时参考</div></div></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="pane pane-main">
+      <div class="pane-head">打包预览 <span class="sp"></span> <span class="badge">合并包 · 约 8.6 MB</span></div>
+      <div class="pane-body" style="padding:16px 22px">
+
+        <div class="pkg">
+          <div class="pkg-head">
+            <div class="pkg-ic">📦</div>
+            <div>
+              <div class="pkg-name">背影_第2课时_备课包.zip</div>
+              <div class="pkg-sub">生成于 今天 10:24 · 含 5 个文件</div>
+            </div>
+            <span class="badge badge-ok pkg-badge">已校验</span>
+          </div>
+          <div class="pkg-files">
+            <div class="pf"><span class="pf-ic">▤</span>01_教案_背影_第2课时.docx<span class="pf-sz">42 KB</span></div>
+            <div class="pf"><span class="pf-ic">▦</span>02_课件_背影_第2课时.pptx<span class="pf-sz">6.8 MB</span></div>
+            <div class="pf"><span class="pf-ic">▤</span>03_讲稿_背影_第2课时.docx<span class="pf-sz">38 KB</span></div>
+            <div class="pf"><span class="pf-ic">📎</span>04_引用清单.pdf<span class="pf-sz">86 KB</span></div>
+            <div class="pf"><span class="pf-ic">📄</span>05_教学设计说明.pdf<span class="pf-sz">34 KB</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="cap" style="margin-bottom:8px">导出前检查（安全输出闸）</div>
+          <div class="gcol" style="gap:6px">
+            <div class="row"><span style="color:var(--ok);width:16px;flex:none">✓</span><div style="flex:1"><div class="row-name" style="font-size:12.5px">课标引用均可核验</div><div class="row-sub">7 条 · 全部带页码与版本号</div></div></div>
+            <div class="row"><span style="color:var(--ok);width:16px;flex:none">✓</span><div style="flex:1"><div class="row-name" style="font-size:12.5px">无涉敏内容</div><div class="row-sub">输入 / 生成 / 输出三闸均通过</div></div></div>
+            <div class="row"><span style="color:var(--ok);width:16px;flex:none">✓</span><div style="flex:1"><div class="row-name" style="font-size:12.5px">公开课相似度 4%</div><div class="row-sub">低于 25% 阈值，附在引用清单中</div></div></div>
+            <div class="row"><span style="color:var(--ok);width:16px;flex:none">✓</span><div style="flex:1"><div class="row-name" style="font-size:12.5px">无学生个人信息</div><div class="row-sub">教材原文为公有领域</div></div></div>
+          </div>
+        </div>
+
+        <div class="cap" style="margin-top:14px;line-height:1.7">
+          导出包中包含的引用清单，是你在教研活动中的免责声明与证据链。
+        </div>
+
+      </div>
+      <div style="flex:none;display:flex;align-items:center;gap:9px;padding:var(--pad);border-top:1px solid var(--line-soft)">
+        <button class="btn">📋 复制引用清单</button>
+        <button class="btn btn-quiet">重新检查</button>
+        <span class="sp"></span>
+        <span class="cap">保存到 · D:\备课\初二语文</span>
+        <button class="btn">更改位置</button>
+        <button class="btn btn-primary">导出合并包 →</button>
+      </div>
+    </section>
+
+    <aside class="pane pane-ai" style="width:320px">
+      <div class="pane-head">本次导出的版本</div>
+      <div class="pane-body gcol">
+        <div class="card">
+          <div class="row-name" style="font-size:13px;margin-bottom:6px">v3 · 今天 10:24</div>
+          <div class="gcol" style="gap:5px">
+            <div style="display:flex;gap:8px"><span class="cap" style="width:52px;flex:none">教案</span><span class="small mut">v3 · 你改过 3 处</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:52px;flex:none">课件</span><span class="small mut">v3 · 已按评审修改</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:52px;flex:none">讲稿</span><span class="small mut">v2 · 已同步课件</span></div>
+          </div>
+        </div>
+
+        <hr class="hairline">
+        <div class="cap" style="margin-bottom:8px">历次导出</div>
+        <div class="gcol" style="gap:6px">
+          <div class="row"><div style="flex:1"><div class="row-name" style="font-size:12.5px">v3 · 今天 10:24</div><div class="row-sub">评审后修改版</div></div><button class="btn btn-sm btn-quiet">打开</button></div>
+          <div class="row"><div style="flex:1"><div class="row-name" style="font-size:12.5px">v2 · 昨天 18:41</div><div class="row-sub">试讲版</div></div><button class="btn btn-sm btn-quiet">打开</button></div>
+          <div class="row"><div style="flex:1"><div class="row-name" style="font-size:12.5px">v1 · 上周三</div><div class="row-sub">首版</div></div><button class="btn btn-sm btn-quiet">打开</button></div>
+        </div>
+
+        <div class="card" style="margin-top:6px">
+          <div class="cap" style="margin-bottom:6px">分享</div>
+          <div class="gcol" style="gap:6px">
+            <button class="btn" style="justify-content:flex-start;font-size:12.5px">📧 邮件给教研组</button>
+            <button class="btn" style="justify-content:flex-start;font-size:12.5px">☁ 上传到校本资源库</button>
+            <button class="btn" style="justify-content:flex-start;font-size:12.5px">🔗 复制分享链接</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="statusbar">
+    <span>导出 · 背影_第2课时_备课包.zip</span>
+    <span class="grow"></span>
+    <span class="stamp solid"><span class="stamp-line"></span><span class="stamp-label">三件套已定稿 · 可导出</span></span>
+  </footer>
+</div>
+</body>
+</html>

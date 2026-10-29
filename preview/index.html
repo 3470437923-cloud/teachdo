@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>师作 TeachDo · 项目首页</title>
+<link rel="stylesheet" href="teachdo.css">
+</head>
+<body>
+
+<nav class="preview-nav">
+  <span class="pv-tag">预览</span>
+  <a href="index.html" class="on">首页</a>
+  <a href="new.html">新建备课</a>
+  <a href="context.html">上下文装配</a>
+  <a href="lesson.html">教案</a>
+  <a href="ppt.html">课件</a>
+  <a href="script.html">讲稿</a>
+  <a href="review.html">冷读评审</a>
+  <a href="export.html">导出</a>
+  <a href="design.html">设计规范</a>
+</nav>
+
+<div class="app">
+
+  <!-- 标题栏 -->
+  <header class="titlebar">
+    <div class="brand">
+      <div class="brand-mark">师</div>
+      师作 TeachDo
+      <span class="brand-sub">教师备课工作台</span>
+    </div>
+    <div class="tb-right">
+      <button class="tb-btn" title="收起文件栏">◧</button>
+      <button class="tb-btn" title="收起助手栏">◨</button>
+      <span class="tb-sep"></span>
+      <button class="tb-btn" title="设置">⚙</button>
+      <span class="tb-sep"></span>
+      <button class="tb-btn">—</button>
+      <button class="tb-btn">▢</button>
+      <button class="tb-btn">✕</button>
+    </div>
+  </header>
+
+  <div class="main">
+
+    <!-- 左：项目 -->
+    <aside class="pane pane-files">
+      <div class="pane-head">备课项目 <span class="sp"></span> <button class="btn-quiet btn-sm">＋</button></div>
+      <div class="pane-body">
+        <div class="tree">
+          <div class="t-cat"><span class="caret">▾</span>本学期 · 初二语文</div>
+          <div class="t-sub">
+            <div class="t-item on"><span class="ic">▤</span>背影 · 第 2 课时<span class="t-badge">进行中</span></div>
+            <div class="t-item"><span class="ic">▤</span>白杨礼赞</div>
+            <div class="t-item"><span class="ic">▤</span>苏州园林</div>
+            <div class="t-item"><span class="ic">▤</span>苏州园林 · 复习课</div>
+          </div>
+          <div class="t-cat" style="margin-top:10px"><span class="caret">▸</span>上学期 · 初二语文</div>
+          <div class="t-cat" style="margin-top:10px"><span class="caret">▸</span>公开课 · 校级</div>
+          <div class="t-cat" style="margin-top:10px"><span class="caret">▾</span>待归档</div>
+          <div class="t-sub">
+            <div class="t-item"><span class="ic">▤</span>济南的冬天</div>
+          </div>
+        </div>
+      </div>
+      <div class="pane-head" style="border-bottom:none;border-top:1px solid var(--line-soft)">
+        <span class="cap">8 个项目 · 回收站 2</span>
+      </div>
+    </aside>
+
+    <!-- 中：最近与空态 -->
+    <section class="pane pane-main">
+      <div class="pane-body" style="display:flex;flex-direction:column">
+
+        <div class="empty" style="flex:none;padding-top:34px;padding-bottom:26px">
+          <div class="empty-glyph">✎</div>
+          <h1>师作 TeachDo</h1>
+          <div class="sub">三步三成 · 一次备课，教案 / 课件 / 讲稿 三件套同源生成</div>
+          <div class="acts">
+            <a class="btn btn-primary" href="new.html">＋ 新建备课</a>
+            <a class="btn" href="lesson.html">▶ 继续《背影》</a>
+            <button class="btn">导入教材目录</button>
+          </div>
+        </div>
+
+        <hr class="hairline">
+
+        <div style="display:flex;align-items:center;margin-bottom:9px">
+          <span style="font-size:13px;font-weight:660">最近备课</span>
+          <span class="sp"></span>
+          <span class="cap">按最近打开排序</span>
+        </div>
+
+        <div class="grid3">
+          <a class="sheet-card" href="lesson.html" style="display:block">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="card-title" style="font-size:14px">背影 · 第 2 课时</span>
+              <span class="sp"></span><span class="badge badge-warn">课件陈旧</span>
+            </div>
+            <div class="cap" style="margin:6px 0 10px">初二语文 · 优秀公开课教学 · 今天 09:12</div>
+            <div style="display:flex;align-items:center;gap:6px" class="cap">
+              <span style="color:var(--ok)">教案 ✓</span><span class="dim">›</span>
+              <span style="color:var(--warn)">课件 待重做</span><span class="dim">›</span>
+              <span class="dim">讲稿 未开始</span>
+            </div>
+          </a>
+
+          <a class="sheet-card" href="lesson.html" style="display:block">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="card-title" style="font-size:14px">白杨礼赞</span>
+              <span class="sp"></span><span class="badge badge-ok">已定稿</span>
+            </div>
+            <div class="cap" style="margin:6px 0 10px">初二语文 · 实用日常教学 · 昨天 16:40</div>
+            <div style="display:flex;align-items:center;gap:6px" class="cap">
+              <span style="color:var(--ok)">教案 ✓</span><span class="dim">›</span>
+              <span style="color:var(--ok)">课件 ✓</span><span class="dim">›</span>
+              <span style="color:var(--ok)">讲稿 ✓</span>
+            </div>
+          </a>
+
+          <a class="sheet-card" href="new.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:96px;color:var(--tx3)">
+            <div style="font-size:18px">＋</div>
+            <div class="small" style="margin-top:4px">新建备课</div>
+          </a>
+        </div>
+
+        <div class="cap" style="margin-top:auto;text-align:center">在左侧选择项目，或直接开始一次新备课</div>
+      </div>
+    </section>
+
+    <!-- 右：助手 -->
+    <aside class="pane pane-ai">
+      <div class="pane-head">备课助手 <span class="sp"></span> <button class="btn-quiet btn-sm">＋</button></div>
+      <div class="pane-body" style="display:flex;flex-direction:column;gap:12px">
+        <div class="empty" style="flex:none;padding:18px 8px">
+          <div class="empty-glyph" style="width:44px;height:44px;font-size:18px">✦</div>
+          <div style="font-size:14px;font-weight:700">TeachDo 助手</div>
+          <div class="sub" style="font-size:12px">读懂你的备课材料，陪你把一节课做完整</div>
+        </div>
+        <div class="gcol">
+          <button class="btn" style="justify-content:flex-start">✦ 本周我有三节课要备，帮我排个计划</button>
+          <button class="btn" style="justify-content:flex-start">✦ 《背影》这课，公开课常怎么上？</button>
+          <button class="btn" style="justify-content:flex-start">✦ 翻转课堂适合哪些课文？</button>
+          <button class="btn" style="justify-content:flex-start">✦ 检查我最近的备课有没有超纲</button>
+        </div>
+        <div class="sp"></div>
+        <div class="card" style="padding:10px 12px">
+          <div class="cap" style="margin-bottom:6px">课标库</div>
+          <div class="small" style="color:var(--tx2)">已就绪 · 2022 年版义务教育课标</div>
+          <div class="cap" style="margin-top:2px">语文 / 数学 / 英语 · 含学业质量标准</div>
+        </div>
+      </div>
+      <div style="padding:var(--pad);border-top:1px solid var(--line-soft)">
+        <div style="position:relative">
+          <input class="field" placeholder="问我，或让我帮你备课…" style="padding-right:34px">
+          <button class="btn-quiet btn-sm" style="position:absolute;right:4px;top:4px">↑</button>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- 状态条 -->
+  <footer class="statusbar">
+    <span>初二语文 · 背影 · 第 2 课时</span>
+    <span class="grow"></span>
+    <span class="stamp solid"><span class="stamp-line"></span><span class="stamp-label">已落盘 · 全部更改已保存</span></span>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>师作 TeachDo · 教案</title>
+<link rel="stylesheet" href="teachdo.css">
+<style>
+  .t-part .t-steps{display:flex;gap:4px;margin-top:7px}
+  .t-part .t-step{height:16px;flex:1;border-radius:1px;background:var(--ctl-fill);font-size:9px;color:var(--txd);display:flex;align-items:center;justify-content:center}
+  .chk{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid var(--line-soft);align-items:flex-start}
+  .chk:last-child{border-bottom:none}
+  .chk-ic{width:16px;flex:none;font-size:12px;padding-top:1px}
+  .chk.ok .chk-ic{color:var(--ok)}
+  .chk.warn .chk-ic{color:var(--warn)}
+  .chk.bad .chk-ic{color:var(--danger)}
+  .chk-t{font-size:12.5px;font-weight:660;color:var(--tx1)}
+  .chk-d{font-size:11.5px;color:var(--tx3);line-height:1.6;margin-top:2px}
+  .chk.act{cursor:pointer}
+  .chk.act:hover{background:var(--ctl-fill)}
+  .dur{display:flex;align-items:center;gap:8px;margin-top:9px}
+  .dur-bar{flex:1;height:5px;background:var(--ctl-fill);border-radius:2px;overflow:hidden;display:flex}
+  .dur-seg{height:100%;border-right:1px solid var(--canvas)}
+  .sug{border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 11px;margin-bottom:8px;background:transparent}
+  .sug-h{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:660;margin-bottom:6px}
+  .del{color:var(--danger);text-decoration:line-through;opacity:.75}
+  .ins{color:var(--ok)}
+  .u{color:var(--accent-text);text-decoration:underline;text-decoration-style:dashed}
+</style>
+</head>
+<body>
+
+<nav class="preview-nav">
+  <span class="pv-tag">预览</span>
+  <a href="index.html">首页</a><a href="new.html">新建备课</a><a href="context.html">上下文装配</a>
+  <a href="lesson.html" class="on">教案</a><a href="ppt.html">课件</a><a href="script.html">讲稿</a>
+  <a href="review.html">冷读评审</a><a href="export.html">导出</a><a href="design.html">设计规范</a>
+</nav>
+
+<div class="app">
+  <header class="titlebar">
+    <div class="brand"><div class="brand-mark">师</div>师作 TeachDo <span class="brand-sub">背影 · 初二 (3) 班</span></div>
+    <div class="tb-right"><button class="tb-btn">◧</button><button class="tb-btn">◨</button><span class="tb-sep"></span><button class="tb-btn">⚙</button><span class="tb-sep"></span><button class="tb-btn">—</button><button class="tb-btn">▢</button><button class="tb-btn">✕</button></div>
+  </header>
+
+  <div style="flex:none;padding:9px 9px 0;background:var(--canvas)">
+    <div class="ticket">
+      <div class="t-part cur solid">
+        <div class="t-no">壹 · 教案</div><div class="t-name">背影 · 第 2 课时</div>
+        <div class="t-state">已定稿 · 你改过 3 处</div>
+        <div class="t-steps"><span class="t-step" style="background:transparent;color:var(--ok)">✓</span><span class="t-step" style="background:transparent;color:var(--ok)">✓</span><span class="t-step" style="background:transparent;color:var(--ok)">✓</span><span class="t-step" style="background:transparent;color:var(--ok)">✓</span><span class="t-step" style="background:transparent;color:var(--ok)">✓</span></div>
+        <div class="t-underline"></div>
+      </div>
+      <div class="t-link"></div>
+      <div class="t-part stale">
+        <div class="t-no">贰 · 课件</div><div class="t-name">14 页 · 上次生成</div>
+        <div class="t-state">上游已改 · 待重生成</div>
+        <div class="t-steps"><span class="t-step">1</span><span class="t-step">2</span><span class="t-step">3</span><span class="t-step" style="background:transparent;color:var(--warn)">4</span><span class="t-step" style="background:transparent;color:var(--warn)">5</span></div>
+        <div class="t-underline"></div>
+      </div>
+      <div class="t-link"></div>
+      <div class="t-part off">
+        <div class="t-no">叁 · 讲稿</div><div class="t-name">尚未生成</div>
+        <div class="t-state">依赖课件定稿</div>
+        <div class="t-steps"><span class="t-step">—</span><span class="t-step">—</span><span class="t-step">—</span><span class="t-step">—</span><span class="t-step">—</span></div>
+        <div class="t-underline"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <aside class="pane pane-files">
+      <div class="pane-head">教案结构 <span class="sp"></span> <button class="btn-quiet btn-sm">＋</button></div>
+      <div class="pane-body">
+        <div class="tree">
+          <div class="t-cat"><span class="caret">▾</span>一、课题与课时</div>
+          <div class="t-sub">
+            <div class="t-item on"><span class="ic">▤</span>基本信息</div>
+            <div class="t-item"><span class="ic">▤</span>教学目标</div>
+            <div class="t-item"><span class="ic">▤</span>教学重难点</div>
+          </div>
+          <div class="t-cat" style="margin-top:8px"><span class="caret">▾</span>二、学情分析</div>
+          <div class="t-sub"><div class="t-item"><span class="ic">▤</span>学情画像</div></div>
+          <div class="t-cat" style="margin-top:8px"><span class="caret">▾</span>三、教学过程</div>
+          <div class="t-sub">
+            <div class="t-item"><span class="ic">①</span>导入 · 车站背影<span class="t-badge">4′</span></div>
+            <div class="t-item"><span class="ic">②</span>初读 · 整体感知<span class="t-badge">6′</span></div>
+            <div class="t-item"><span class="ic">③</span>品读 · 四次买橘子<span class="t-badge">14′</span></div>
+            <div class="t-item"><span class="ic">④</span>探究 · 两次对比<span class="t-badge">9′</span></div>
+            <div class="t-item"><span class="ic">⑤</span>朗读 · 情感体验<span class="t-badge">7′</span></div>
+            <div class="t-item"><span class="ic">⑥</span>小结 · 开放结尾<span class="t-badge">5′</span></div>
+          </div>
+          <div class="t-cat" style="margin-top:8px"><span class="caret">▾</span>四、板书与作业</div>
+          <div class="t-sub">
+            <div class="t-item"><span class="ic">▤</span>板书设计</div>
+            <div class="t-item"><span class="ic">▤</span>分层作业</div>
+            <div class="t-item"><span class="ic">▤</span>教学反思</div>
+          </div>
+        </div>
+
+        <hr class="hairline">
+        <div class="cap" style="margin-bottom:7px">块状态（上缘线）</div>
+        <div class="gcol" style="gap:5px">
+          <div><span class="blk-line" style="display:inline-block;width:24px;margin:0;border-top:2px solid var(--ok)"></span> <span class="cap">已同步到下游</span></div>
+          <div><span class="blk-line" style="display:inline-block;width:24px;margin:0;border-top:2px dashed var(--warn)"></span> <span class="cap">你改过 · 下游将失效</span></div>
+          <div><span class="blk-line" style="display:inline-block;width:24px;margin:0;border-top:2px dashed var(--txd)"></span> <span class="cap">已陈旧</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="pane pane-main">
+      <div class="pane-head">教案 <span class="sp"></span>
+        <span class="badge">45 分钟 · 6 环节</span>
+        <span class="badge badge-warn" title="你修改的 3 处已使下游 5 页课件失效">5 页课件待更新</span>
+      </div>
+      <div class="pane-body" style="padding:18px 26px;max-width:none">
+
+        <div class="blk synced">
+          <div class="blk-line"></div>
+          <div class="blk-head"><span class="blk-kind">基本信息</span><span class="sp"></span><button class="btn-quiet btn-sm">✎</button></div>
+          <div class="blk-body">
+            <p><b>课题</b>：背影（朱自清）　<b>课时</b>：第 2 课时 · 45 分钟　<b>课型</b>：精读课</p>
+            <p><b>单元位置</b>：统编版八年级上册第五单元「人间至味是清欢」，本单元以<b>亲情</b>为线索，兼读<b>至情</b>与<b>至理</b>；本课为第 2 课时，承第 1 课时的整体感知，聚焦细节描写的品读。</p>
+            <p><b>依据</b>：义务教育语文课程标准（2022 年版）第二部分第四学段「阅读与鉴赏」第 3 条、第三部分学业质量第 12 条。 <span style="color:var(--accent-text)">ⓘ 出处可查</span></p>
+          </div>
+        </div>
+
+        <div class="blk synced">
+          <div class="blk-line"></div>
+          <div class="blk-head"><span class="blk-kind">教学目标</span><span class="sp"></span><button class="btn-quiet btn-sm">✎</button></div>
+          <div class="blk-body">
+            <p>1. <b>语言积累</b>：能有感情地朗读「买橘子」段落，读出停顿与语气的变化，说出朗读依据。</p>
+            <p>2. <b>文本品读</b>：能圈出四次买橘子中的动作、神态描写，逐条说出其表达效果，并对照发现「潜台词」。</p>
+            <p>3. <b>情感体验</b>：能说出自己对父亲这一形象的理解，允许有不同答案，并说明理由。</p>
+            <p class="dim" style="font-size:12px;margin-top:6px">目标 1–3 对应课标「揣摩表达效果、体会情感态度」；目标 3 采用开放表述，呼应课标「允许有不同意见」。</p>
+          </div>
+        </div>
+
+        <div class="blk edited">
+          <div class="blk-line"></div>
+          <div class="blk-head">
+            <span class="blk-kind">教学重难点</span>
+            <span class="badge badge-warn">你改过</span>
+            <span class="sp"></span><button class="btn-quiet btn-sm">✎</button>
+          </div>
+          <div class="blk-body">
+            <p><b>重点</b>：品读「买橘子」段落的动作与神态描写，体会其中的父爱。</p>
+            <p><b>难点</b>：理解作者为什么不直接写自己流泪，而要写「我的泪很快地流下来了」——<b>克制</b>的表达方式与情感的关系。</p>
+            <p class="cap" style="margin-top:6px">改动记录：难点由「理解含蓄」改为「克制表达」，与你的补充要求一致。</p>
+          </div>
+        </div>
+
+        <div class="blk synced">
+          <div class="blk-line"></div>
+          <div class="blk-head"><span class="blk-kind">教学过程 · 环节</span><span class="sp"></span><span class="cap">共 45 分钟</span></div>
+          <div class="blk-body">
+
+            <div style="padding:10px 0;border-bottom:1px solid var(--line-soft)">
+              <div style="display:flex;align-items:center;gap:8px">
+                <b style="font-size:13.5px;color:var(--tx1)">① 导入 · 车站的那个背影</b>
+                <span class="badge">4 分钟</span><span class="sp"></span><span class="cap">教法：情境导入</span>
+              </div>
+              <div class="dur">
+                <span class="cap">4′</span>
+                <div class="dur-bar"><div class="dur-seg" style="background:var(--accent-ink);flex:4"></div></div>
+                <span class="cap">教师 2′ · 学生 2′</span>
+              </div>
+              <p style="margin-top:8px">播放车站月台实景音频（15 秒），只给声音不给画面。学生闭眼听，然后一句话说出「你听到了什么」。教师板书关键词：<b>背影</b>。</p>
+              <p style="margin-top:6px;color:var(--tx3)">意图：先建立身体感（背影的视觉），再进入文本，避免开场直接讲背景。</p>
+            </div>
+
+            <div style="padding:10px 0;border-bottom:1px solid var(--line-soft)">
+              <div style="display:flex;align-items:center;gap:8px">
+                <b style="font-size:13.5px;color:var(--tx1)">③ 品读 · 四次买橘子</b>
+                <span class="badge">14 分钟</span><span class="sp"></span><span class="cap">教法：细读圈点 + 问题链</span>
+              </div>
+              <div class="dur">
+                <span class="cap">14′</span>
+                <div class="dur-bar"><div class="dur-seg" style="background:var(--accent-ink);flex:2"></div><div class="dur-seg" style="background:var(--accent-fill);flex:8"></div><div class="dur-seg" style="background:var(--ctl-fill);border-right:none;flex:4"></div></div>
+                <span class="cap">教师 2′ · 学生 12′</span>
+              </div>
+              <p style="margin-top:8px">投影四句话，学生四人小组分工：每组负责一句，圈出<b>动作词</b>与<b>神态词</b>，用「这个词让我想到……」的句式说一句。然后全班合并成一张四行表。</p>
+              <div style="margin-top:9px;border:1px solid var(--line);border-radius:var(--r-sm)">
+                <table style="width:100%;border-collapse:collapse;font-size:12.5px">
+                  <thead><tr style="background:var(--well)">
+                    <th style="text-align:left;padding:6px 9px;font-weight:660;color:var(--tx3);font-size:11px;letter-spacing:.04em">原句</th>
+                    <th style="text-align:left;padding:6px 9px;font-weight:660;color:var(--tx3);font-size:11px;letter-spacing:.04em">圈出的词</th>
+                    <th style="text-align:left;padding:6px 9px;font-weight:660;color:var(--tx3);font-size:11px;letter-spacing:.04em">学生说出</th>
+                  </tr></thead>
+                  <tbody style="color:var(--tx2)">
+                    <tr style="border-top:1px solid var(--line-soft)"><td style="padding:6px 9px">我看见他戴着黑布小帽</td><td style="padding:6px 9px">戴着 · 黑布小帽</td><td style="padding:6px 9px">他出门穿戴得很随便</td></tr>
+                    <tr style="border-top:1px solid var(--line-soft)"><td style="padding:6px 9px">他蹒跚地走到铁道边</td><td style="padding:6px 9px;color:var(--warn)">蹒跚</td><td style="padding:6px 9px">腿脚不好还亲自来</td></tr>
+                    <tr style="border-top:1px solid var(--line-soft)"><td style="padding:6px 9px">他慢慢探身下去</td><td style="padding:6px 9px;color:var(--warn)">慢慢 · 探</td><td style="padding:6px 9px">很小心，怕碰着火车</td></tr>
+                    <tr style="border-top:1px solid var(--line-soft)"><td style="padding:6px 9px">他两手攀着上面</td><td style="padding:6px 9px;color:var(--warn)">攀</td><td style="padding:6px 9px">用上半身去够</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="margin-top:8px;color:var(--tx3)">教师只做一件事：把学生的说法收进这张表，不评价对错。板书在右侧同步写出四个词。</p>
+            </div>
+
+            <div style="padding:10px 0">
+              <div style="display:flex;align-items:center;gap:8px">
+                <b style="font-size:13.5px;color:var(--tx1)">⑥ 小结 · 留给学生的问题</b>
+                <span class="badge">5 分钟</span><span class="sp"></span><span class="cap">教法：开放收束</span>
+              </div>
+              <p style="margin-top:8px">教师只说一句：「今天我们没讲完一件事。」然后板书一个大问号，<b>不再给出答案</b>，下课。备课时预设两种学生可能的追问，写在讲稿里备用。</p>
+              <p style="margin-top:6px;color:var(--tx3)">意图：呼应你的补充要求「不过度煽情，结尾留开放问题」。</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="blk edited">
+          <div class="blk-line"></div>
+          <div class="blk-head">
+            <span class="blk-kind">分层作业</span><span class="badge badge-warn">你改过</span>
+            <span class="sp"></span><button class="btn-quiet btn-sm">✎</button>
+          </div>
+          <div class="blk-body">
+            <p><b>基础</b>：朗读「买橘子」段落，做到读出停顿与语气。</p>
+            <p><b>提升</b>：找出文中另一处细节描写，说出它与「买橘子」的相似点。</p>
+            <p><b>拓展</b>：以「我家的背影」为题写 150 字，必须写出一个动作细节。</p>
+          </div>
+        </div>
+
+      </div>
+      <div style="flex:none;display:flex;align-items:center;gap:9px;padding:var(--pad);border-top:1px solid var(--line-soft)">
+        <button class="btn">＋ 加环节</button>
+        <button class="btn">让 AI 重写本节</button>
+        <span class="sp"></span>
+        <span class="cap">3 处改动已记录 · 将影响 5 页课件</span>
+        <a class="btn btn-primary" href="ppt.html">更新受影响的课件 →</a>
+      </div>
+    </section>
+
+    <aside class="pane pane-ai">
+      <div class="runner"></div>
+      <div class="pane-head">强约束校验 <span class="sp"></span> <span class="badge badge-ok">5 通过 · 2 提示</span></div>
+      <div class="pane-body">
+        <div class="chk ok">
+          <div class="chk-ic">✓</div>
+          <div><div class="chk-t">课标依据完整</div><div class="chk-d">3 处目标均可回溯到 2022 版课标条目，无悬空引用</div></div>
+        </div>
+        <div class="chk ok">
+          <div class="chk-ic">✓</div>
+          <div><div class="chk-t">学段词汇越界 0 处</div><div class="chk-d">未出现超出初二理解范围的术语</div></div>
+        </div>
+        <div class="chk ok">
+          <div class="chk-ic">✓</div>
+          <div><div class="chk-t">环节时长自洽</div><div class="chk-d">4+6+14+9+7+5 = 45 分钟，与课时一致</div></div>
+        </div>
+        <div class="chk ok">
+          <div class="chk-ic">✓</div>
+          <div><div class="chk-t">教法一致性</div><div class="chk-d">全文按「优秀公开课教学」结构编排，导入—品读—探究—开放收束</div></div>
+        </div>
+        <div class="chk ok">
+          <div class="chk-ic">✓</div>
+          <div><div class="chk-t">公开课相似度 4%</div><div class="chk-d">远低于 25% 阈值，未构成借鉴性抄袭</div></div>
+        </div>
+        <div class="chk warn act">
+          <div class="chk-ic">!</div>
+          <div>
+            <div class="chk-t">环节④ 时间偏紧 <span class="badge badge-warn">可修</span></div>
+            <div class="chk-d">「两次对比」9 分钟内安排了 3 次小组汇报，按本班学情可能压不完。试试压缩到 2 次，或把它挪到课后。</div>
+            <div style="margin-top:7px;display:flex;gap:7px">
+              <button class="btn btn-sm">让 AI 重排</button><button class="btn btn-sm btn-quiet">忽略</button>
+            </div>
+          </div>
+        </div>
+        <div class="chk warn act">
+          <div class="chk-ic">!</div>
+          <div>
+            <div class="chk-t">「目标 2」动词偏笼统 <span class="badge badge-warn">可修</span></div>
+            <div class="chk-d">「逐条说出表达效果」不可观测。建议改为「说出其中至少 2 处并给出理由」。</div>
+            <div style="margin-top:7px"><button class="btn btn-sm">让 AI 改写</button></div>
+          </div>
+        </div>
+
+        <hr class="hairline">
+        <div class="cap" style="margin-bottom:8px">AI 修改建议 · 3 条</div>
+
+        <div class="sug">
+          <div class="sug-h"><span class="cap">环节③ · 表格</span><span class="sp"></span><span class="chip on">采纳</span></div>
+          <div class="small" style="color:var(--tx2);line-height:1.7">
+            把「学生说出」列由开放改为<b>两个预设选项</b>（A 腿脚不便仍亲自来 / B 他不放心儿子），初二学生更易开口。
+          </div>
+        </div>
+
+        <div class="sug">
+          <div class="sug-h"><span class="cap">导入 · 音频</span><span class="sp"></span><span class="chip on">采纳</span></div>
+          <div class="small" style="color:var(--tx2);line-height:1.7">
+            <span class="del">「播放实景音频（15 秒）」</span> → <span class="ins">「播放 8 秒，只放脚步声与汽笛，不放人声」</span><br>
+            <span class="cap" style="margin-top:4px;display:block">理由：更短的听觉刺激更聚焦，也避免 AI 无法生成音频时的空转。</span>
+          </div>
+        </div>
+
+        <div class="sug">
+          <div class="sug-h"><span class="cap">结尾 · 开放问题</span><span class="sp"></span><span class="chip on">采纳</span></div>
+          <div class="small" style="color:var(--tx2);line-height:1.7">
+            板书问号改为<b>具体一问</b>：「父亲为什么不去车站和儿子告别？」——比空问号更可落地，且留白不减。
+          </div>
+        </div>
+      </div>
+      <div style="padding:var(--pad);border-top:1px solid var(--line-soft)">
+        <div style="position:relative">
+          <input class="field" placeholder="对教案说点什么…">
+        </div>
+        <div style="display:flex;gap:7px;margin-top:8px">
+          <button class="btn btn-sm" style="flex:1">选中部分让 AI 改</button>
+          <button class="btn btn-sm btn-quiet">查课标</button>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="statusbar">
+    <span>壹 · 教案 · 已定稿</span><span class="dim">｜</span><span>你改过 3 处 · 5 页课件陈旧</span>
+    <span class="grow"></span>
+    <span class="stamp draft"><span class="stamp-line"></span><span class="stamp-label">有未落盘改动 · Ctrl+S</span></span>
+  </footer>
+</div>
+</body>
+</html>

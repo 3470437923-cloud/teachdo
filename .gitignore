@@ -1,0 +1,21 @@
+# 依赖与构建产物
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/gen/
+
+# 本地发行包通过 GitHub Releases 单独分发
+release/
+
+# Windows 快捷方式与测试截图
+*.lnk
+tests/_check.png
+
+# 本地配置、凭据与系统文件
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+*.log

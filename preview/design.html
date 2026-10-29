@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>师作 TeachDo · 设计规范</title>
+<link rel="stylesheet" href="teachdo.css">
+<style>
+  .spec{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .rule{border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px;background:transparent}
+  .rule-n{font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--accent-text);margin-bottom:5px}
+  .rule-t{font-size:13.5px;font-weight:700;margin-bottom:6px}
+  .rule-d{font-size:12px;color:var(--tx2);line-height:1.7}
+  .sw{display:flex;gap:6px;margin-top:8px;align-items:center}
+  .sw i{width:44px;height:26px;border-radius:3px;border:1px solid var(--line);flex:none;display:block}
+  .sw .cap{flex:1}
+  .ladder{display:flex;gap:4px;margin-top:8px}
+  .ladder i{flex:1;height:22px;border-radius:2px;border:1px solid var(--line);display:block}
+  .ladder + .cap{margin-top:4px}
+</style>
+</head>
+<body>
+
+<nav class="preview-nav">
+  <span class="pv-tag">预览</span>
+  <a href="index.html">首页</a><a href="new.html">新建备课</a><a href="context.html">上下文装配</a>
+  <a href="lesson.html">教案</a><a href="ppt.html">课件</a><a href="script.html">讲稿</a>
+  <a href="review.html">冷读评审</a><a href="export.html">导出</a><a href="design.html" class="on">设计规范</a>
+</nav>
+
+<div class="app">
+  <header class="titlebar">
+    <div class="brand"><div class="brand-mark">师</div>师作 TeachDo <span class="brand-sub">设计规范</span></div>
+    <div class="tb-right"><span class="tb-sep"></span><button class="tb-btn">—</button><button class="tb-btn">▢</button><button class="tb-btn">✕</button></div>
+  </header>
+
+  <div class="main" style="display:block;overflow:auto;padding:22px 26px;max-width:960px;margin:0 auto;width:100%">
+
+    <h1 style="font-size:23px;font-weight:700;letter-spacing:-0.022em;margin-bottom:6px">设计规范 · 课前三联单</h1>
+    <p style="color:var(--tx3);font-size:13px;max-width:720px;line-height:1.75;margin-bottom:20px">
+      师作 TeachDo 的视觉世界不是"氛围"，而是一张<b style="color:var(--tx2)">课前三联单</b>：教案、课件、讲稿三件套在教研工位之间流转，每一次交接都在签上留痕——谁碰过、到哪一步、是否已定稿。整个界面就是那张三联单。
+    </p>
+
+    <div class="spec">
+
+      <div class="rule">
+        <div class="rule-n">R-01</div>
+        <div class="rule-t">三联签：三件套的血缘线</div>
+        <div class="rule-d">每个屏顶部都有壹·教案、贰·课件、叁·讲稿三联签。当前所在的那联用强调墨描边；每联下缘用一条线说状态：<b>实线=已定稿、虚线=草稿/有改动、半高=陈旧（上游已改）</b>。教师看一眼就知道：哪一联还欠着、哪一联该重做。</div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-n">R-02</div>
+        <div class="rule-t">五级明度阶梯，零渐变零模糊</div>
+        <div class="rule-d">层级只由明度差承担：画布 → 侧轨 → 纸面 → 抬升面，外加一个反向的"井"（输入区）。全屏零渐变、零 backdrop-filter、零彩色光晕。任何位置出现渐变/模糊/光晕都是回归。</div>
+        <div class="ladder"><i style="background:#0a0e17"></i><i style="background:#111726"></i><i style="background:#151c2c"></i><i style="background:#1b2336"></i><i style="background:#0d1320"></i></div>
+        <div class="cap">画布 → 侧轨 → 纸面 → 抬升面 ｜ 井（反向）</div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-n">R-03</div>
+        <div class="rule-t">强调墨只出现两次</div>
+        <div class="rule-d">靛青墨（靛青 #5567c0）在一屏里最多出现两次：<b>当前所在的位置</b>（如当前页签、当前步骤），和<b>唯一的主操作</b>（如"生成教案 →"、"采纳并应用"）。分类标签、徽标、日期、图标一律中性。强调色被分掉就再也读不出"哪个是主按钮"。</div>
+        <div class="sw"><i style="background:#5567c0"></i><span class="cap">靛青 · 强调墨</span></div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-n">R-04</div>
+        <div class="rule-t">状态由线形说，不由色相说</div>
+        <div class="rule-d">一套线形词汇覆盖所有状态：实线已定稿 / 虚线有改动 / 半高陈旧 / 划掉禁用。颜色只表达危险、警告、成功三类语义。这条保证在色觉缺陷下状态依然成立，也让截图可以黑白打印给教研组看。</div>
+        <div class="sw">
+          <span class="cap" style="flex:none;width:52px">实线</span><span style="flex:1;border-top:2px solid var(--ok)"></span><span class="cap" style="flex:none">已定稿</span>
+        </div>
+        <div class="sw">
+          <span class="cap" style="flex:none;width:52px">虚线</span><span style="flex:1;border-top:2px dashed var(--warn)"></span><span class="cap" style="flex:none">有改动</span>
+        </div>
+        <div class="sw">
+          <span class="cap" style="flex:none;width:52px">半高</span><span style="flex:1;border-top:1px dashed var(--txd);transform:scaleY(.5)"></span><span class="cap" style="flex:none">陈旧</span>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-n">R-05</div>
+        <div class="rule-t">行进线：全 app 唯一编排动效</div>
+        <div class="rule-d">AI 生成时，面板<b>上缘</b>出现一条 2px 实心靛青短线，自左向右跑动。它是"正在思考"的唯一动效表达，替代了旧版的旋转光晕——光晕属于装饰，跑动的线是"流水线在动"这个状态。</div>
+        <div class="runner" style="margin-top:9px;border-radius:2px"></div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-n">R-06</div>
+        <div class="rule-t">过签线：落盘状态的最后一步</div>
+        <div class="rule-d">状态条右侧的 20×2px 短线：实线=已落盘、虚线=有未落盘改动。每次状态变化时这条线被重建，于是自左向右"划"出来一次——像在三联单上盖章。右侧永远跟着文字，状态从不只靠线形单独承担。</div>
+        <div style="margin-top:9px;display:flex;align-items:center;gap:8px">
+          <span class="stamp solid"><span class="stamp-line"></span></span>
+          <span class="cap">已落盘</span>
+          <span class="stamp draft" style="margin-left:14px"><span class="stamp-line"></span></span>
+          <span class="cap">有未落盘改动</span>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-n">R-07</div>
+        <div class="rule-t">紧半径，器械感</div>
+        <div class="rule-d">圆角只表达"这是个可点的件"。印章与登记标 2px；控件 4px；卡片 6px；面板 8px；模态框 10px。真圆（999px）只留给本来就是圆的东西——开关轨道、滑杆钮。分界全部是 1px 发丝线，没有超过 1px 的彩色边条。</div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-n">R-08</div>
+        <div class="rule-t">密度是功能，不是风格</div>
+        <div class="rule-d">列表行高 26px、控件高 32px、胶囊 24px。备课是连续几小时的高密度阅读，教师的时间宝贵，每一行都要能用。降级范围：1024×700 到 1600×1000 无溢出无底部空隙。</div>
+      </div>
+
+      <div class="rule" style="grid-column:1/-1">
+        <div class="rule-n">R-09</div>
+        <div class="rule-t">两套主题，同一套阶梯</div>
+        <div class="rule-d">曜石黑 / 晨雾白是同一套明度阶梯的两种解法，不是两种风格。强调墨默认跟随主题：暗色用靛青、浅色用深靛。浅色主题刻意走冷灰——不走中国写作软件默认的暖米黄纸感。</div>
+        <div class="sw" style="margin-top:9px">
+          <i style="background:#0a0e17;flex:none;width:60px"></i><i style="background:#151c2c;flex:none;width:60px"></i><i style="background:#5567c0;flex:none;width:60px"></i>
+          <span class="cap" style="flex:none">曜石黑（当前）</span>
+          <i style="background:#e7ebf2;flex:none;width:60px;margin-left:14px"></i><i style="background:#ffffff;flex:none;width:60px"></i><i style="background:#4a5fb8;flex:none;width:60px"></i>
+          <span class="cap" style="flex:none">晨雾白</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line-soft)" class="cap">
+      基于 DeepCompose 设计纪律改编 · 师作 TeachDo 项目组
+    </div>
+
+  </div>
+
+  <footer class="statusbar">
+    <span>设计规范 · 课前三联单</span>
+    <span class="grow"></span>
+    <span class="stamp solid"><span class="stamp-line"></span><span class="stamp-label">预览 v0.1</span></span>
+  </footer>
+</div>
+</body>
+</html>

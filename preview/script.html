@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>师作 TeachDo · 讲稿</title>
+<link rel="stylesheet" href="teachdo.css">
+<style>
+  .tl{display:flex;flex-direction:column;gap:2px}
+  .tl-item{display:flex;gap:10px;padding:9px 8px;border-radius:var(--r-sm);cursor:pointer;align-items:flex-start}
+  .tl-item:hover{background:var(--ctl-fill)}
+  .tl-item.on{background:var(--accent-soft)}
+  .tl-time{width:52px;flex:none;font-size:12px;font-weight:700;color:var(--tx3);font-variant-numeric:tabular-nums;padding-top:2px;text-align:right}
+  .tl-line{flex:none;width:2px;align-self:stretch;border-radius:1px;background:var(--line-strong);position:relative}
+  .tl-item.on .tl-line{background:var(--accent-fill)}
+  .tl-item.on .tl-name{color:var(--accent-text)}
+  .tl-name{font-size:13px;font-weight:660;color:var(--tx1)}
+  .tl-sub{font-size:11px;color:var(--txd);margin-top:2px}
+  .tl-item.stale{opacity:.55}
+  .tl-item.stale .tl-line{background:var(--txd)}
+  .pg{border:1px solid var(--line);border-radius:var(--r-md);padding:0;margin-bottom:12px;overflow:hidden}
+  .pg-head{display:flex;align-items:center;gap:9px;padding:9px 12px;background:var(--well);border-bottom:1px solid var(--line-soft)}
+  .pg-num{width:22px;height:22px;border-radius:var(--r-xs);background:var(--accent-soft);color:var(--accent-text);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none}
+  .pg-title{font-size:13px;font-weight:700}
+  .pg-t{margin-left:auto;font-size:11px;color:var(--txd);font-variant-numeric:tabular-nums}
+  .pg-body{padding:11px 12px}
+  .say{border-left:2px solid var(--accent-ink);padding-left:10px;font-size:13.5px;line-height:1.85;color:var(--tx2);margin-bottom:9px}
+  .say b{color:var(--tx1)}
+  .say .who{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--txd);border:1px solid var(--line);border-radius:var(--r-xs);padding:0 5px;margin-right:7px;vertical-align:1px}
+  .say .who.stu{color:var(--warn);border-color:rgba(224,176,85,.35)}
+  .board{display:flex;gap:9px;align-items:flex-start;padding:8px 10px;background:var(--well);border-radius:var(--r-sm);margin-bottom:8px}
+  .board .b-tag{font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--txd);flex:none;padding-top:2px;width:38px}
+  .board .b-body{font-size:12.5px;color:var(--tx2);line-height:1.7}
+  .act{display:flex;gap:9px;align-items:flex-start;padding:8px 10px;background:var(--well);border-radius:var(--r-sm)}
+  .act .a-tag{font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--txd);flex:none;padding-top:2px;width:38px}
+  .act .a-body{font-size:12.5px;color:var(--tx2);line-height:1.7}
+  .tt{display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r-md);background:transparent}
+  .tt-bar{flex:1;height:7px;background:var(--ctl-fill);border-radius:2px;overflow:hidden;position:relative}
+  .tt-fill{position:absolute;inset:0 auto 0 0;width:71%;background:var(--accent-fill);border-radius:2px}
+  .tt-45{position:absolute;top:-3px;bottom:-3px;left:100%;width:1.5px;background:var(--tx3)}
+  .tt-45::after{content:"45′";position:absolute;top:-16px;left:-9px;font-size:10px;color:var(--txd);font-variant-numeric:tabular-nums}
+  .pg.skip{border-style:dashed;opacity:.7}
+  .chk{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid var(--line-soft);align-items:flex-start}
+  .chk:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+
+<nav class="preview-nav">
+  <span class="pv-tag">预览</span>
+  <a href="index.html">首页</a><a href="new.html">新建备课</a><a href="context.html">上下文装配</a>
+  <a href="lesson.html">教案</a><a href="ppt.html">课件</a><a href="script.html" class="on">讲稿</a>
+  <a href="review.html">冷读评审</a><a href="export.html">导出</a><a href="design.html">设计规范</a>
+</nav>
+
+<div class="app">
+  <header class="titlebar">
+    <div class="brand"><div class="brand-mark">师</div>师作 TeachDo <span class="brand-sub">背影 · 讲稿</span></div>
+    <div class="tb-right"><button class="tb-btn">◧</button><button class="tb-btn">◨</button><span class="tb-sep"></span><button class="tb-btn">⚙</button><span class="tb-sep"></span><button class="tb-btn">—</button><button class="tb-btn">▢</button><button class="tb-btn">✕</button></div>
+  </header>
+
+  <div style="flex:none;padding:9px 9px 0;background:var(--canvas)">
+    <div class="ticket">
+      <div class="t-part solid"><div class="t-no">壹 · 教案</div><div class="t-name">已定稿</div><div class="t-state">3 处改动</div><div class="t-underline"></div></div>
+      <div class="t-link"></div>
+      <div class="t-part solid"><div class="t-no">贰 · 课件</div><div class="t-name">已定稿</div><div class="t-state">14 页</div><div class="t-underline"></div></div>
+      <div class="t-link"></div>
+      <div class="t-part cur draft"><div class="t-no">叁 · 讲稿</div><div class="t-name">逐页生成</div><div class="t-state">已同步课件</div><div class="t-underline"></div></div>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <aside class="pane pane-files" style="width:216px">
+      <div class="pane-head">课堂时间轴 <span class="sp"></span> <span class="cap">45′</span></div>
+      <div class="pane-body">
+        <div class="tl">
+          <div class="tl-item"><div class="tl-time">00:00</div><div class="tl-line"></div><div style="flex:1;min-width:0"><div class="tl-name">P1 · 封面</div><div class="tl-sub">学生入座 · 不写姓名</div></div></div>
+          <div class="tl-item"><div class="tl-time">00:30</div><div class="tl-line"></div><div style="flex:1;min-width:0"><div class="tl-name">P2 · 导入 · 听车站</div><div class="tl-sub">闭眼 8 秒 · 一个词</div></div></div>
+          <div class="tl-item"><div class="tl-time">04:00</div><div class="tl-line"></div><div style="flex:1;min-width:0"><div class="tl-name">P3 · 单元位置</div><div class="tl-sub">承上启下 · 三单元目录</div></div></div>
+          <div class="tl-item on"><div class="tl-time">06:00</div><div class="tl-line"></div><div style="flex:1;min-width:0"><div class="tl-name">P4 · 品读 · 攀</div><div class="tl-sub">核心 · 小组圈点</div></div></div>
+          <div class="tl-item stale"><div class="tl-time">12:00</div><div class="tl-line"></div><div style="flex:1;min-width:0"><div class="tl-name">P5 · 品读 · 探身</div><div class="tl-sub">教案已改 · 待重生成</div></div></div>
+          <div class="tl-item stale"><div class="tl-time">20:00</div><div class="tl-line"></div><div style="flex:1;min-width:0"><div class="tl-name">P6 · 对比 · 我的泪</div><div class="tl-sub">教案已改 · 待重生成</div></div></div>
+          <div class="tl-item"><div class="tl-time">26:00</div><div class="tl-line"></div><div style="flex:1;min-width:0"><div class="tl-name">P7 · 朗读</div><div class="tl-sub">配乐 30 秒</div></div></div>
+          <div class="tl-item"><div class="tl-time">33:00</div><div class="tl-line"></div><div style="flex:1;min-width:0"><div class="tl-name">P8 · 开放结尾</div><div class="tl-sub">不给出答案</div></div></div>
+          <div class="tl-item"><div class="tl-time">38:00</div><div class="tl-line"></div><div style="flex:1;min-width:0"><div class="tl-name">P9 · 作业</div><div class="tl-sub">基础 / 提升 / 拓展</div></div></div>
+          <div class="tl-item"><div class="tl-time">42:00</div><div class="tl-line"></div><div style="flex:1;min-width:0"><div class="tl-name">P10 · 结语</div><div class="tl-sub">3 分钟机动</div></div></div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="cap" style="margin-bottom:7px">总时长校验</div>
+          <div class="tt">
+            <span class="cap" style="width:30px;flex:none">32′</span>
+            <div class="tt-bar"><div class="tt-fill"></div><div class="tt-45"></div></div>
+          </div>
+          <div class="cap" style="margin-top:7px;line-height:1.6;color:var(--warn)">
+            ⚠ 当前 32 分钟，剩余 13 分钟空档 —— 建议在 P6 加入学生互评环节（教案环节④），或把 P4 的品读展开到 8 分钟。
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="pane pane-main">
+      <div class="pane-head">逐页讲稿 <span class="sp"></span>
+        <span class="chip on">✓ 已同步课件</span>
+        <span class="chip">P5·P6 陈旧</span>
+        <span class="badge badge-warn">剩余 13′</span>
+      </div>
+      <div class="pane-body" style="padding:16px 22px">
+
+        <div class="pg">
+          <div class="pg-head">
+            <div class="pg-num">4</div>
+            <div>
+              <div class="pg-title">品读 · 「攀」一个字读出心思</div>
+              <div class="cap">对应教案 · 环节③　·　约 8 分钟</div>
+            </div>
+            <div class="pg-t">06:00 – 14:00</div>
+          </div>
+          <div class="pg-body">
+
+            <div class="board">
+              <span class="b-tag">板书</span>
+              <div class="b-body">中间写一个大字「<b>攀</b>」，左右各留 1/3 空间，等学生说完再填。</div>
+            </div>
+
+            <div class="say">
+              <span class="who">师</span>
+              大家刚才都注意到了「攀」这个字。四个人围在一起，<b>不要说话，先用 1 分钟，把你们组负责的那一句里的动作词圈出来</b>。圈好了，就可以小声交流了。
+            </div>
+            <div class="say">
+              <span class="who stu">预设</span>
+              学生可能说出：「攀比爬更用力」「他用手去够，说明上身高」——都先板书在「攀」字的左侧。
+            </div>
+            <div class="say">
+              <span class="who">师</span>
+              好，时间到。哪一组先说说「攀」这个字？（<b>不看教案</b>，让学生自由说）
+            </div>
+            <div class="say">
+              <span class="who stu">预设</span>
+              若有学生说「他不体面」，先不评价，反问一句：「他为什么不体面？」——把答案交给学生。
+            </div>
+
+            <div class="act">
+              <span class="a-tag">互动</span>
+              <div class="a-body">四人小组 · 每组 1 句 · 用「这个词让我想到……」开口。教师巡视，<b>不评价对错</b>，只把学生的说法收进板书。</div>
+            </div>
+
+            <div style="display:flex;gap:7px;margin-top:10px">
+              <button class="btn btn-sm">✎ 让 AI 改写本页</button>
+              <button class="btn btn-sm btn-quiet">复制到剪贴板</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="pg skip">
+          <div class="pg-head">
+            <div class="pg-num" style="background:transparent;border:1px solid var(--line);color:var(--txd)">5</div>
+            <div>
+              <div class="pg-title" style="color:var(--tx3)">品读 · 「探身」</div>
+              <div class="cap" style="color:var(--txd)">对应教案 · 环节③　·　教案已改，讲稿待重生成</div>
+            </div>
+            <div class="pg-t">12:00 – 20:00</div>
+          </div>
+          <div class="pg-body">
+            <div class="say" style="border-left-color:var(--line-strong);color:var(--txd)">
+              <span class="who" style="border-color:var(--line);color:var(--txd)">师</span>
+              （本页讲稿基于旧教案生成，教案环节③的用词与小组分工都已调整。）
+            </div>
+            <div style="display:flex;gap:7px;margin-top:10px">
+              <button class="btn btn-sm">✦ 让 AI 重生成 P5·P6</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pg skip">
+          <div class="pg-head">
+            <div class="pg-num" style="background:transparent;border:1px solid var(--line);color:var(--txd)">6</div>
+            <div>
+              <div class="pg-title" style="color:var(--tx3)">对比 · 我的泪</div>
+              <div class="cap" style="color:var(--txd)">对应教案 · 环节④　·　教案已改</div>
+            </div>
+            <div class="pg-t">20:00 – 26:00</div>
+          </div>
+          <div class="pg-body">
+            <div class="say" style="border-left-color:var(--line-strong);color:var(--txd)">
+              <span class="who" style="border-color:var(--line);color:var(--txd)">师</span>
+              （本页讲稿基于旧教案生成，待重生成。）
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div style="flex:none;display:flex;align-items:center;gap:9px;padding:var(--pad);border-top:1px solid var(--line-soft)">
+        <button class="btn btn-quiet">通读讲稿</button>
+        <span class="sp"></span>
+        <span class="cap">2 页陈旧 · 剩余 13′</span>
+        <button class="btn btn-primary">✦ 让 AI 重生成陈旧页</button>
+      </div>
+    </section>
+
+    <aside class="pane pane-ai" style="width:320px">
+      <div class="pane-head">讲稿体检 <span class="sp"></span> <span class="badge badge-ok">3 通过 · 1 提示</span></div>
+      <div class="pane-body">
+        <div class="chk">
+          <div style="color:var(--ok);width:16px;flex:none;font-size:12px;padding-top:1px">✓</div>
+          <div><div style="font-size:12.5px;font-weight:660;color:var(--tx1)">逐页绑定</div><div style="font-size:11.5px;color:var(--tx3);line-height:1.6;margin-top:2px">每页讲稿都与对应课件页一一对应，无孤儿页</div></div>
+        </div>
+        <div class="chk">
+          <div style="color:var(--ok);width:16px;flex:none;font-size:12px;padding-top:1px">✓</div>
+          <div><div style="font-size:12.5px;font-weight:660;color:var(--tx1)">预设学生回答覆盖</div><div style="font-size:11.5px;color:var(--tx3);line-height:1.6;margin-top:2px">6 个提问点全部有预设回答与追问分支</div></div>
+        </div>
+        <div class="chk">
+          <div style="color:var(--ok);width:16px;flex:none;font-size:12px;padding-top:1px">✓</div>
+          <div><div style="font-size:12.5px;font-weight:660;color:var(--tx1)">时长反推自洽</div><div style="font-size:11.5px;color:var(--tx3);line-height:1.6;margin-top:2px">每页时长与教案环节一致，未超总课时</div></div>
+        </div>
+        <div class="chk" style="cursor:pointer">
+          <div style="color:var(--warn);width:16px;flex:none;font-size:12px;padding-top:1px">!</div>
+          <div>
+            <div style="font-size:12.5px;font-weight:660;color:var(--tx1)">总时长不足 <span class="badge badge-warn">可修</span></div>
+            <div style="font-size:11.5px;color:var(--tx3);line-height:1.6;margin-top:2px">32′ / 45′。剩余 13 分钟可能冷场，建议加入学生互评环节。</div>
+            <div style="margin-top:7px"><button class="btn btn-sm">让 AI 补环节</button></div>
+          </div>
+        </div>
+
+        <hr class="hairline">
+        <div class="cap" style="margin-bottom:8px">预设角色（供 AI 参考）</div>
+        <div class="gcol" style="gap:6px">
+          <div class="role" style="padding:9px 11px">
+            <div class="role-head" style="margin-bottom:0">
+              <div class="role-ava">🧑‍🎓</div>
+              <div><div class="role-name">初二学生</div><div class="role-sub">学情画像·发言积极易跑题</div></div>
+            </div>
+          </div>
+          <div class="role" style="padding:9px 11px">
+            <div class="role-head" style="margin-bottom:0">
+              <div class="role-ava">👩‍🏫</div>
+              <div><div class="role-name">教研员</div><div class="role-sub">重环节逻辑与时间分配</div></div>
+            </div>
+          </div>
+          <div class="role" style="padding:9px 11px">
+            <div class="role-head" style="margin-bottom:0">
+              <div class="role-ava">📝</div>
+              <div><div class="role-name">督导</div><div class="role-sub">重目标达成与课标对齐</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:10px"><a class="btn btn-sm" style="width:100%" href="review.html">进入冷读评审 →</a></div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="statusbar">
+    <span>叁 · 讲稿 · 生成中</span><span class="dim">｜</span><span>10 页 · 2 页陈旧 · 剩余 13′</span>
+    <span class="grow"></span>
+    <span class="stamp draft"><span class="stamp-line"></span><span class="stamp-label">有未落盘改动</span></span>
+  </footer>
+</div>
+</body>
+</html>

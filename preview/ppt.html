@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>师作 TeachDo · 课件</title>
+<link rel="stylesheet" href="teachdo.css">
+<style>
+  .canvas-wrap{flex:1;overflow:auto;display:flex;align-items:center;justify-content:center;padding:26px;background:var(--canvas)}
+  .canvas{width:100%;max-width:980px}
+  .slide-frame{position:relative;border-radius:2px}
+  .sel{position:absolute;border:1.5px solid var(--accent-ink);border-radius:2px;pointer-events:none}
+  .sel-h{width:7px;height:7px;background:var(--accent-ink);border-radius:1px;position:absolute}
+  .thumbs{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+  .thumb .inner{aspect-ratio:16/9;padding:10px 9px 8px;display:flex;flex-direction:column;gap:5px}
+  .th-line{height:3px;background:var(--line-strong);border-radius:1px}
+  .th-accent{height:3px;background:var(--accent-fill);border-radius:1px}
+  .th-t{height:8px;background:var(--tx3);border-radius:1px;opacity:.85}
+  .prop{border:1px solid var(--line);border-radius:var(--r-md);padding:11px 12px;margin-bottom:9px;background:transparent}
+  .prop-h{font-size:12px;font-weight:700;color:var(--tx3);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+  .prop-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .prop-row label{width:44px;flex:none;font-size:11px;color:var(--txd)}
+  .prop-row input[type=text],.prop-row select{height:26px}
+  .layout{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;cursor:pointer}
+  .layout.on{border-color:var(--accent-ink);box-shadow:inset 0 0 0 1px var(--accent-ink)}
+  .layout .lv{height:44px;padding:7px;display:flex;flex-direction:column;gap:4px;background:var(--well)}
+  .layout .ln{font-size:10px;color:var(--txd);padding:6px 7px}
+</style>
+</head>
+<body>
+
+<nav class="preview-nav">
+  <span class="pv-tag">预览</span>
+  <a href="index.html">首页</a><a href="new.html">新建备课</a><a href="context.html">上下文装配</a>
+  <a href="lesson.html">教案</a><a href="ppt.html" class="on">课件</a><a href="script.html">讲稿</a>
+  <a href="review.html">冷读评审</a><a href="export.html">导出</a><a href="design.html">设计规范</a>
+</nav>
+
+<div class="app">
+  <header class="titlebar">
+    <div class="brand"><div class="brand-mark">师</div>师作 TeachDo <span class="brand-sub">背影 · 课件</span></div>
+    <div class="tb-right"><button class="tb-btn">◧</button><button class="tb-btn">◨</button><span class="tb-sep"></span><button class="tb-btn">⚙</button><span class="tb-sep"></span><button class="tb-btn">—</button><button class="tb-btn">▢</button><button class="tb-btn">✕</button></div>
+  </header>
+
+  <div style="flex:none;padding:9px 9px 0;background:var(--canvas)">
+    <div class="ticket">
+      <div class="t-part solid"><div class="t-no">壹 · 教案</div><div class="t-name">已定稿</div><div class="t-state">你改过 3 处</div><div class="t-underline"></div></div>
+      <div class="t-link"></div>
+      <div class="t-part cur draft"><div class="t-no">贰 · 课件</div><div class="t-name">14 页 · 5 页待重生成</div><div class="t-state">画布编辑中</div><div class="t-underline"></div></div>
+      <div class="t-link"></div>
+      <div class="t-part off"><div class="t-no">叁 · 讲稿</div><div class="t-name">待生成</div><div class="t-state">依赖课件定稿</div><div class="t-underline"></div></div>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <aside class="pane pane-files" style="width:204px">
+      <div class="pane-head">页面 <span class="sp"></span> <span class="cap">14</span></div>
+      <div class="pane-body">
+        <div class="thumbs">
+          <div class="thumb solid"><div class="thumb-state"></div><div class="thumb-num">01</div><div class="inner"><div class="th-accent" style="width:44%"></div><div class="th-t" style="width:82%"></div><div class="th-line" style="width:60%"></div><div class="th-line" style="width:70%"></div></div></div>
+          <div class="thumb solid"><div class="thumb-state"></div><div class="thumb-num">02</div><div class="inner"><div class="th-accent" style="width:36%"></div><div class="th-t" style="width:66%"></div><div class="th-line" style="width:88%"></div><div class="th-line" style="width:74%"></div></div></div>
+          <div class="thumb solid"><div class="thumb-state"></div><div class="thumb-num">03</div><div class="inner"><div class="th-accent" style="width:40%"></div><div class="th-t" style="width:76%"></div><div class="th-line" style="width:64%"></div></div></div>
+          <div class="thumb on draft"><div class="thumb-state"></div><div class="thumb-num">04</div><div class="inner"><div class="th-accent" style="width:40%"></div><div class="th-t" style="width:80%"></div><div class="th-line" style="width:70%"></div><div class="th-line" style="width:82%"></div></div></div>
+          <div class="thumb draft"><div class="thumb-state"></div><div class="thumb-num">05</div><div class="inner"><div class="th-accent" style="width:40%"></div><div class="th-t" style="width:72%"></div><div class="th-line" style="width:60%"></div></div></div>
+          <div class="thumb stale"><div class="thumb-state"></div><div class="thumb-num">06</div><div class="inner"><div class="th-accent" style="width:40%"></div><div class="th-t" style="width:70%"></div><div class="th-line" style="width:52%"></div></div></div>
+          <div class="thumb stale"><div class="thumb-state"></div><div class="thumb-num">07</div><div class="inner"><div class="th-accent" style="width:40%"></div><div class="th-t" style="width:78%"></div><div class="th-line" style="width:64%"></div></div></div>
+          <div class="thumb stale"><div class="thumb-state"></div><div class="thumb-num">08</div><div class="inner"><div class="th-accent" style="width:40%"></div><div class="th-t" style="width:74%"></div><div class="th-line" style="width:66%"></div></div></div>
+          <div class="thumb solid"><div class="thumb-state"></div><div class="thumb-num">09</div><div class="inner"><div class="th-accent" style="width:36%"></div><div class="th-t" style="width:68%"></div><div class="th-line" style="width:60%"></div></div></div>
+          <div class="thumb solid"><div class="thumb-state"></div><div class="thumb-num">10</div><div class="inner"><div class="th-accent" style="width:40%"></div><div class="th-t" style="width:76%"></div></div></div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="cap" style="margin-bottom:6px">状态</div>
+          <div class="gcol" style="gap:4px">
+            <div class="cap"><span style="color:var(--ok)">■</span> 9 页 · 已同步</div>
+            <div class="cap"><span style="color:var(--warn)">▨</span> 3 页 · 已编辑</div>
+            <div class="cap"><span style="color:var(--txd)">▨</span> 3 页 · 陈旧（教案已改）</div>
+          </div>
+          <div style="margin-top:10px"><button class="btn btn-sm" style="width:100%">让 AI 重做陈旧的 3 页</button></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="pane pane-main" style="display:flex;flex-direction:column;overflow:hidden">
+
+      <div class="toolbar">
+        <button class="tool on" title="选择">⬚</button>
+        <button class="tool" title="文本">T</button>
+        <button class="tool" title="图片">▣</button>
+        <button class="tool" title="形状">◍</button>
+        <button class="tool" title="表格">▦</button>
+        <button class="tool" title="公式">ƒ</button>
+        <span class="tool-sep"></span>
+        <button class="tool">↶</button><button class="tool">↷</button>
+        <span class="tool-sep"></span>
+        <button class="tool" title="对齐">⊞</button>
+        <button class="tool" title="图层">☰</button>
+        <span class="tool-sep"></span>
+        <button class="tool">主题</button>
+        <button class="tool">版式</button>
+        <span class="tool-sep"></span>
+        <span class="cap" style="margin:0 4px">16:9</span>
+        <button class="tool">100%</button>
+        <span class="sp"></span>
+        <button class="btn btn-sm">导出演示</button>
+      </div>
+
+      <div class="canvas-wrap">
+        <div class="canvas">
+          <div class="slide-frame">
+            <div class="slide" style="aspect-ratio:16/9">
+              <div class="slide-head"></div>
+              <div class="slide-body">
+                <div style="font-size:12px;color:#8a93a6;letter-spacing:.18em">品 读 · 第 四 次 买 橘 子</div>
+                <h2>「攀」—— 一个字读出三种心思</h2>
+                <ul>
+                  <li>腿脚不好，还<b>亲自</b>来</li>
+                  <li>用<b>上半身</b>去够，顾不上体面</li>
+                  <li>「我」终于看懂了</li>
+                </ul>
+                <div class="foot">背影 · 朱自清　｜　初二语文 · 第 2 课时　｜　P 04 / 14</div>
+              </div>
+              <div class="sel" style="left:38px;top:96px;width:56%;height:56px">
+                <div class="sel-h" style="left:-4px;top:-4px"></div>
+                <div class="sel-h" style="right:-4px;top:-4px"></div>
+                <div class="sel-h" style="left:-4px;bottom:-4px"></div>
+                <div class="sel-h" style="right:-4px;bottom:-4px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:none;padding:9px;border-top:1px solid var(--line-soft);display:flex;gap:9px;align-items:center">
+        <span class="chip on">✦ AI 意见</span>
+        <input class="field" style="flex:1" placeholder="对当前这一页说点什么……">
+        <button class="btn btn-sm">应用到本页</button>
+        <button class="btn btn-sm btn-quiet">应用到全部</button>
+      </div>
+    </section>
+
+    <aside class="pane pane-ai" style="width:340px">
+      <div class="pane-head">属性 <span class="sp"></span> <span class="chip on">对象</span><span class="chip">版式</span></div>
+      <div class="pane-body">
+
+        <div class="prop">
+          <div class="prop-h">✎ 标题</div>
+          <div class="prop-row"><label>文字</label><input class="field" type="text" value="「攀」—— 一个字读出三种心思" style="height:28px"></div>
+          <div class="prop-row"><label>字号</label><input class="field" type="text" value="26" style="height:28px;width:60px"><span class="cap">px</span></div>
+          <div class="prop-row"><label>字重</label>
+            <select class="field" style="height:28px;flex:1"><option>粗</option><option>中</option><option>常规</option></select>
+          </div>
+          <div class="prop-row"><label>颜色</label>
+            <div style="display:flex;gap:4px;flex:1">
+              <span style="width:22px;height:22px;border-radius:3px;background:#1c2330;border:1px solid var(--line-strong);box-shadow:inset 0 0 0 1.5px var(--accent-ink)"></span>
+              <span style="width:22px;height:22px;border-radius:3px;background:#3c4452;border:1px solid var(--line)"></span>
+              <span style="width:22px;height:22px;border-radius:3px;background:#8a93a6;border:1px solid var(--line)"></span>
+              <span style="width:22px;height:22px;border-radius:3px;background:#5567c0;border:1px solid var(--line)"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prop">
+          <div class="prop-h">版式（L1 · 占位符引擎）</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+            <div class="layout on"><div class="lv"><div style="height:3px;background:#5567c0;width:40%"></div><div style="height:5px;background:#3c4452;width:70%"></div></div><div class="ln">标题页</div></div>
+            <div class="layout"><div class="lv"><div style="height:3px;background:#5567c0;width:40%"></div><div style="height:5px;background:#3c4452;width:70%"></div><div style="height:2px;background:#b8c0cc;width:88%"></div></div><div class="ln">标题+一行</div></div>
+            <div class="layout"><div class="lv"><div style="height:3px;background:#5567c0;width:40%"></div><div style="height:5px;background:#3c4452;width:70%"></div><div style="height:2px;background:#b8c0cc;width:88%"></div><div style="height:2px;background:#b8c0cc;width:70%"></div></div><div class="ln">标题+两行</div></div>
+            <div class="layout"><div class="lv"><div style="height:3px;background:#5567c0;width:40%"></div><div style="height:5px;background:#3c4452;width:60%"></div><div style="height:2px;background:#b8c0cc;width:50%"></div></div><div class="ln">左文右图</div></div>
+            <div class="layout"><div class="lv"><div style="height:3px;background:#5567c0;width:40%"></div><div style="height:5px;background:#3c4452;width:60%"></div><div style="height:2px;background:#b8c0cc;width:70%"></div></div><div class="ln">对比页</div></div>
+            <div class="layout"><div class="lv"><div style="height:3px;background:#5567c0;width:30%"></div></div><div class="ln">纯文字</div></div>
+          </div>
+        </div>
+
+        <div class="prop">
+          <div class="prop-h">✦ AI 对第 4 页的建议</div>
+          <div class="gcol" style="gap:6px">
+            <div class="sug" style="margin:0;border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 11px;background:transparent">
+              <div style="display:flex;align-items:center;gap:7px;font-size:12px;font-weight:660;margin-bottom:6px"><span class="cap">标题</span><span class="sp"></span><span class="chip on">采纳</span></div>
+              <div class="small" style="color:var(--tx2);line-height:1.7">
+                短标题比长标题在后排可读性更好。建议：<span style="color:var(--danger);text-decoration:line-through;opacity:.75">「一个字读出三种心思」</span>→<span style="color:var(--ok)">「一个字读出心思」</span>
+              </div>
+            </div>
+            <div style="margin:0;border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 11px;background:transparent">
+              <div style="display:flex;align-items:center;gap:7px;font-size:12px;font-weight:660;margin-bottom:6px"><span class="cap">正文</span><span class="sp"></span><span class="chip on">采纳</span></div>
+              <div class="small" style="color:var(--tx2);line-height:1.7">
+                第 3 条「『我』终于看懂了」偏成人化，可改成「我这时才懂」更贴初二学生。
+              </div>
+            </div>
+            <div style="margin:0;border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 11px;background:transparent">
+              <div style="display:flex;align-items:center;gap:7px;font-size:12px;font-weight:660;margin-bottom:6px"><span class="cap">配图</span><span class="sp"></span><span class="chip on">采纳</span></div>
+              <div class="small" style="color:var(--tx2);line-height:1.7">
+                当前无图。素雅纸本能承载一张小插图（如「脚步 + 月台」剪影）放在标题右侧。
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="statusbar">
+    <span>贰 · 课件 · 画布编辑中</span><span class="dim">｜</span><span>第 4 页 / 共 14 页 · 3 页陈旧</span>
+    <span class="grow"></span>
+    <span class="stamp draft"><span class="stamp-line"></span><span class="stamp-label">有未落盘改动 · Ctrl+S</span></span>
+  </footer>
+</div>
+</body>
+</html>

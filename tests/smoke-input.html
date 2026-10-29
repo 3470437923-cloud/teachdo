@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head><meta charset="UTF-8"><title>TeachDo · 输入冒烟</title><link rel="stylesheet" href="../app/teachdo.css"></head>
+<body>
+<div class="app">
+  <header class="titlebar">
+    <div class="brand"><div class="brand-mark">师</div>师作 TeachDo <span class="brand-sub">输入冒烟</span></div>
+    <div class="tb-right"><button class="tb-btn" id="btn-theme">◐</button><button class="tb-btn" id="btn-save">💾</button><button class="tb-btn" id="btn-open">📂</button><button class="tb-btn" id="btn-settings">⚙</button></div>
+  </header>
+  <div class="steps-bar" id="stepsBar"></div>
+  <div class="main">
+    <section class="pane pane-main"><div class="runner" id="runner" style="display:none"></div><div class="pane-body" id="viewBody"></div><div class="actionbar" id="actionBar"></div></section>
+    <aside class="pane pane-side hidden" id="sidePane"><div class="pane-head" id="sideTitle">面板 <span class="sp"></span><button class="btn-quiet btn-sm" id="sideClose">✕</button></div><div class="pane-body" id="sideBody"></div></aside>
+  </div>
+  <footer class="statusbar"><span id="stLeft">smoke</span><span class="grow"></span><span id="stKb" class="cap"></span><span class="stamp solid" id="stStamp"><span class="stamp-line"></span><span class="stamp-label">就绪</span></span></footer>
+</div>
+<div id="modalRoot"></div>
+<script src="../app/js/kb.js"></script>
+<script src="../app/js/catalog.js"></script>
+<script src="../app/js/majors.js"></script>
+<script src="../app/js/prompts.js"></script>
+<script src="../app/js/llm.js"></script>
+<script src="../app/js/core.js"></script>
+<script src="../app/js/export.js"></script>
+<script src="../app/js/ui.js"></script>
+<script>
+window.addEventListener("DOMContentLoaded", ()=>{
+  const q = new URLSearchParams(location.search);
+  const theme = q.get("theme"); if(theme) document.documentElement.setAttribute("data-theme", theme);
+  const stage = q.get("stage") || "初中";
+  const subject = q.get("subject") || null;
+  TD.Core.proj = TD.Core.blank();
+  const i = TD.Core.proj.input;
+  i.stage = stage;
+  const list = TD.CAT.subjects[stage]||[];
+  i.subject = subject && list.includes(subject) ? subject : (list[0]||"语文");
+  const verList = TD.CAT.versions[i.subject]||["人教版"];
+  i.version = verList[0];
+  if(q.get("grade")) i.grade = q.get("grade");
+  if(q.get("term")) i.term = q.get("term");
+  if(q.get("major")) i.major = q.get("major");
+  if(q.get("course")) i.majorCourse = q.get("course");
+  TD.UI.step = 0; TD.UI.renderSteps(); TD.UI.goto(0);
+});
+</script>
+</body>
+</html>

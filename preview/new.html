@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>师作 TeachDo · 新建备课</title>
+<link rel="stylesheet" href="teachdo.css">
+<style>
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
+  .seg{display:flex;gap:0;border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:var(--well)}
+  .seg button{
+    flex:1;height:34px;font-size:13px;color:var(--tx2);
+    border-right:1px solid var(--line-soft);
+  }
+  .seg button:last-child{border-right:none}
+  .seg button.on{background:var(--accent-soft);color:var(--accent-text);font-weight:660}
+  .seg button:not(.on):hover{background:var(--ctl-fill)}
+  .style-card{border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;cursor:pointer;background:var(--well)}
+  .style-card.on{border-color:var(--accent-ink);box-shadow:inset 0 0 0 1px var(--accent-ink)}
+  .style-swatch{height:64px;display:flex}
+  .style-swatch i{flex:1}
+  .style-card .meta{padding:8px 10px}
+  .style-name{font-size:13px;font-weight:660}
+  .style-note{font-size:11px;color:var(--txd);margin-top:2px}
+  .method{border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px;cursor:pointer;background:transparent}
+  .method.on{border-color:var(--accent-ink);box-shadow:inset 0 0 0 1px var(--accent-ink);background:var(--accent-soft)}
+  .method .m-name{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .method .m-desc{font-size:12px;color:var(--tx3);line-height:1.65;margin-top:5px}
+  .method .m-fit{font-size:11px;color:var(--txd);margin-top:7px;padding-top:7px;border-top:1px solid var(--line-soft)}
+  .sec-h{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .sec-n{width:18px;height:18px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--tx3)}
+  .sec-t{font-size:15px;font-weight:700;letter-spacing:-0.008em}
+</style>
+</head>
+<body>
+
+<nav class="preview-nav">
+  <span class="pv-tag">预览</span>
+  <a href="index.html">首页</a>
+  <a href="new.html" class="on">新建备课</a>
+  <a href="context.html">上下文装配</a>
+  <a href="lesson.html">教案</a>
+  <a href="ppt.html">课件</a>
+  <a href="script.html">讲稿</a>
+  <a href="review.html">冷读评审</a>
+  <a href="export.html">导出</a>
+  <a href="design.html">设计规范</a>
+</nav>
+
+<div class="app">
+  <header class="titlebar">
+    <div class="brand"><div class="brand-mark">师</div>师作 TeachDo <span class="brand-sub">新建备课</span></div>
+    <div class="tb-right">
+      <span class="tb-sep"></span>
+      <button class="tb-btn">—</button><button class="tb-btn">▢</button><button class="tb-btn">✕</button>
+    </div>
+  </header>
+
+  <div class="main">
+
+    <aside class="pane pane-files">
+      <div class="pane-head">备课输入</div>
+      <div class="pane-body">
+        <div class="steps">
+          <div class="step cur">
+            <div class="step-dot">壹</div>
+            <div>
+              <div class="step-name">面向谁上课</div>
+              <div class="step-sub">学段 · 学科 · 班级学情</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-dot">贰</div>
+            <div>
+              <div class="step-name">课题与内容</div>
+              <div class="step-sub">课文位置 · 课时 · 教学要求</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-dot">叁</div>
+            <div>
+              <div class="step-name">教法与画风</div>
+              <div class="step-sub">教学法 · 课件风格</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="hairline">
+        <div class="cap" style="line-height:1.7;margin-bottom:6px">填写完后，TeachDo 会先装配备课上下文（课标 / 公开课 / 参考课件），再进入第一步生成教案。</div>
+        <a class="btn btn-sm" href="context.html">查看装配过程 →</a>
+      </div>
+    </aside>
+
+    <section class="pane pane-main">
+      <div class="pane-body" style="padding:22px 26px">
+
+        <div class="sec-h"><div class="sec-n">壹</div><div class="sec-t">面向谁上课</div><span class="sp"></span><span class="cap">决定用词深度、例证尺度、目标表述</span></div>
+        <div class="form-grid">
+          <div>
+            <label class="label">学段</label>
+            <div class="seg">
+              <button>小学</button><button>初中</button><button class="on">高中</button><button>大学</button>
+            </div>
+          </div>
+          <div>
+            <label class="label">学科</label>
+            <div class="seg">
+              <button class="on">语文</button><button>数学</button><button>英语</button><button>其他</button>
+            </div>
+          </div>
+          <div>
+            <label class="label">年级 / 班级</label>
+            <input class="field" value="初二 (3) 班 · 42 人">
+          </div>
+          <div>
+            <label class="label">教材版本</label>
+            <select class="field">
+              <option>统编版 · 八年级上册</option>
+              <option>人教版 · 八年级上册</option>
+              <option>苏教版 · 八年级上册</option>
+            </select>
+          </div>
+          <div style="grid-column:1/-1">
+            <label class="label">班级学情（可留空，AI 会按年级默认画像）</label>
+            <textarea class="field" rows="2" placeholder="例如：班级整体阅读基础较弱，朗读习惯差，但对细节描写敏感……">整体阅读理解中等偏下，概括能力弱；对细节描写与情感变化较敏感；课堂发言积极但常跑题；家长对背诵与考点要求较高。</textarea>
+            <div class="g2" style="margin-top:8px">
+              <span class="chip on">✓ 自动套用「初二 · 阅读」学情画像</span>
+              <span class="chip">⚠ 手动画像覆盖</span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="hairline">
+
+        <div class="sec-h"><div class="sec-n">贰</div><div class="sec-t">课题与内容</div></div>
+        <div class="form-grid">
+          <div>
+            <label class="label">课题</label>
+            <input class="field" value="背影">
+          </div>
+          <div>
+            <label class="label">单元 / 课时位置</label>
+            <input class="field" value="第五单元 · 第 2 课时（品读父亲）">
+          </div>
+          <div>
+            <label class="label">课时长度</label>
+            <select class="field"><option>40 分钟（1 课时）</option><option selected>45 分钟（1 课时）</option><option>90 分钟（2 课时连堂）</option></select>
+          </div>
+          <div>
+            <label class="label">教材原文</label>
+            <div style="display:flex;gap:7px">
+              <button class="btn btn-sm">从教材库导入</button>
+              <button class="btn btn-sm">上传 PDF</button>
+              <button class="btn btn-sm">粘贴文本</button>
+            </div>
+          </div>
+          <div style="grid-column:1/-1">
+            <label class="label">补充要求（教学意图、考点、必须讲到的点）</label>
+            <textarea class="field" rows="2">重点讲清第四次买橘子这一处的动作细节与父子情感；不要过度煽情；结尾保留一处留给学生的开放问题。</textarea>
+          </div>
+        </div>
+
+        <hr class="hairline">
+
+        <div class="sec-h"><div class="sec-n">叁</div><div class="sec-t">教学法与画风</div><span class="sp"></span><span class="cap">教法决定环节结构，画风决定课件视觉</span></div>
+
+        <label class="label">推荐的教学方法</label>
+        <div class="grid2" style="gap:9px">
+          <div class="method">
+            <div class="m-name">实用日常教学</div>
+            <div class="m-desc">讲授为主、环节紧凑。适合日常每节都要上的课，目标直给、板书清晰。</div>
+            <div class="m-fit">适合：赶进度、期末复习课</div>
+          </div>
+          <div class="method on">
+            <div class="m-name">优秀公开课教学 <span class="badge">当前</span></div>
+            <div class="m-desc">以情境导入与问题链驱动，重文本细读与情感体验，环节有设计感，适合展示与比赛。</div>
+            <div class="m-fit">适合：公开课、评优、教研组汇报</div>
+          </div>
+          <div class="method">
+            <div class="m-name">翻转课堂</div>
+            <div class="m-desc">课前任务单 + 课中答疑探究 + 课后应用。教师讲得少，学生讲得多。</div>
+            <div class="m-fit">适合：学生有平板 / 条件较好</div>
+          </div>
+          <div class="method">
+            <div class="m-name">小组汇报课</div>
+            <div class="m-desc">以小组为单位探究、汇报、互评，教师退居主持人与点评。</div>
+            <div class="m-fit">适合：可分组、有小组评价机制</div>
+          </div>
+        </div>
+        <div style="margin-top:9px"><span class="chip">＋ 自定义教法</span></div>
+
+        <hr class="hairline">
+
+        <label class="label">PPT 画风要求</label>
+        <div class="grid3" style="gap:9px">
+          <div class="style-card on">
+            <div class="style-swatch">
+              <i style="background:#f5f7fb"></i><i style="background:#5567c0"></i><i style="background:#d8c9a3"></i><i style="background:#2c3341"></i>
+            </div>
+            <div class="meta"><div class="style-name">素雅纸本</div><div class="style-note">留白大 · 宋体 · 克制</div></div>
+          </div>
+          <div class="style-card">
+            <div class="style-swatch">
+              <i style="background:#fdf6e8"></i><i style="background:#c9743a"></i><i style="background:#5b7a52"></i><i style="background:#3a3128"></i>
+            </div>
+            <div class="meta"><div class="style-name">暖阳课堂</div><div class="style-note">暖色 · 圆润 · 亲和</div></div>
+          </div>
+          <div class="style-card">
+            <div class="style-swatch">
+              <i style="background:#0f1115"></i><i style="background:#1f6feb"></i><i style="background:#e6edf3"></i><i style="background:#7d8590"></i>
+            </div>
+            <div class="meta"><div class="style-name">现代极简</div><div class="style-note">深底 · 高对比 · 信息密度高</div></div>
+          </div>
+        </div>
+
+        <div class="form-grid" style="margin-top:14px">
+          <div style="grid-column:1/-1">
+            <label class="label">画风补充要求</label>
+            <input class="field" placeholder="例如：不要卡通人物；标题用小一号字；图片偏黑白" value="不要卡通与手绘风；整体偏黑白，仅用一处暖色点睛；每页文字不超过 5 行">
+          </div>
+        </div>
+
+      </div>
+      <div style="flex:none;display:flex;align-items:center;gap:9px;padding:var(--pad);border-top:1px solid var(--line-soft)">
+        <button class="btn btn-quiet">取消</button>
+        <span class="sp"></span>
+        <span class="cap">下一步：装配备课上下文</span>
+        <a class="btn btn-primary" href="context.html">开始装配 →</a>
+      </div>
+    </section>
+
+    <aside class="pane pane-ai">
+      <div class="pane-head">本次备课</div>
+      <div class="pane-body gcol">
+        <div class="card">
+          <div class="row-name" style="margin-bottom:8px">背影 · 初二 (3) 班</div>
+          <div class="gcol" style="gap:6px">
+            <div style="display:flex;gap:8px"><span class="cap" style="width:56px;flex:none">学段</span><span class="small mut">初中 · 语文</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:56px;flex:none">教材</span><span class="small mut">统编版 八上 · 第五单元</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:56px;flex:none">课时</span><span class="small mut">45 分钟</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:56px;flex:none">教法</span><span class="small mut">优秀公开课教学</span></div>
+            <div style="display:flex;gap:8px"><span class="cap" style="width:56px;flex:none">画风</span><span class="small mut">素雅纸本</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cap" style="margin-bottom:8px">将要检索</div>
+          <div class="gcol" style="gap:5px">
+            <div class="small mut">· 义务教育语文课标 · 第五单元学段目标</div>
+            <div class="small mut">· 背影 · 公开课实录与课件（全网）</div>
+            <div class="small mut">· 优秀课件版式参考（素雅纸本）</div>
+            <div class="small mut">· 初二阅读学情画像</div>
+          </div>
+        </div>
+
+        <div class="cap" style="line-height:1.7">
+          版权说明：公开课内容只作教学结构与方法借鉴，不复制原文表述；课件只取版式与配色风格。生成后会自动做成品相似度自检。
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="statusbar">
+    <span>新建备课 · 初二语文《背影》</span>
+    <span class="grow"></span>
+    <span class="cap">课标库 2022 年版 · 已就绪</span>
+  </footer>
+</div>
+</body>
+</html>

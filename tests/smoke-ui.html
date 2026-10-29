@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>TeachDo B01 · UI 冒烟（注入假数据）</title>
+<link rel="stylesheet" href="../app/teachdo.css">
+</head>
+<body>
+<div class="app">
+  <header class="titlebar">
+    <div class="brand"><div class="brand-mark">师</div>师作 TeachDo <span class="brand-sub">B01 · 教师备课工作台</span></div>
+    <div class="tb-right">
+      <button class="tb-btn" id="btn-save">💾</button>
+      <button class="tb-btn" id="btn-open">📂</button>
+      <button class="tb-btn" id="btn-settings">⚙</button>
+    </div>
+  </header>
+  <div class="steps-bar" id="stepsBar"></div>
+  <div class="main">
+    <section class="pane pane-main">
+      <div class="runner" id="runner" style="display:none"></div>
+      <div class="pane-body" id="viewBody"></div>
+      <div class="actionbar" id="actionBar"></div>
+    </section>
+    <aside class="pane pane-side" id="sidePane">
+      <div class="pane-head" id="sideTitle">面板 <span class="sp"></span><button class="btn-quiet btn-sm" id="sideClose">✕</button></div>
+      <div class="pane-body" id="sideBody"></div>
+    </aside>
+  </div>
+  <footer class="statusbar">
+    <span id="stLeft">师作 TeachDo B01</span><span class="grow"></span>
+    <span id="stKb" class="cap"></span>
+    <span class="stamp solid" id="stStamp"><span class="stamp-line"></span><span class="stamp-label">就绪</span></span>
+  </footer>
+</div>
+<div id="modalRoot"></div>
+
+<script src="../app/js/kb.js"></script>
+<script src="../app/js/prompts.js"></script>
+<script src="../app/js/llm.js"></script>
+<script src="../app/js/core.js"></script>
+<script src="../app/js/export.js"></script>
+<script src="../app/js/ui.js"></script>
+<script>
+window.__step = (function(){ const m = location.search.match(/step=(\d)/); return m?+m[1]:1; })();
+window.addEventListener("DOMContentLoaded", ()=>{
+  const C = TD.Core;
+  C.proj = C.blank();
+  C.proj.input = { stage:"初中", subject:"语文", grade:"初二 (3) 班", textbook:"统编版", topic:"背影", unit:"第五单元 · 第 2 课时", minutes:45, method:"优秀公开课教学", style:"paper", extra:"", classNote:"" };
+  C.assemble(C.proj.input);
+  C.proj.lesson = C.wrapLesson({
+    meta:{ topic:"背影", basis:C.proj.pkg.standards.map(s=>s.id) },
+    objectives:["能有感情地朗读「买橘子」段落","能圈出动作神态词并说效果","能说出对父亲形象的理解"],
+    keypoints:{key:"品读动作与神态描写", hard:"克制的表达方式与情感"},
+    stages:[
+      {name:"导入 · 车站背影", minutes:4, teacher:"播放月台音频", student:"闭眼听·说一个词", intent:"建立身体感", board:"背影"},
+      {name:"初读 · 整体感知", minutes:6, teacher:"布置朗读任务", student:"自由朗读·概括", intent:"整体框架", board:""},
+      {name:"品读 · 四次买橘子", minutes:18, teacher:"收束进表", student:"小组圈点动作词", intent:"细读", board:"攀"},
+      {name:"探究 · 两次对比", minutes:12, teacher:"出示改句", student:"对比朗读", intent:"体味表达", board:""},
+      {name:"小结 · 开放结尾", minutes:5, teacher:"只板书问号", student:"记录问题", intent:"留白", board:"?"}
+    ],
+    board:"中央「攀」左右留白", homework:[{level:"基础",task:"朗读"},{level:"提升",task:"找另一处细节"},{level:"拓展",task:"写我家的背影150字"}], reflection:"学生是否真懂克制"
+  });
+  C.proj.slides = [
+    {no:1, layout:"cover", title:"背影", kicker:"初二语文 · 第 2 课时", bullets:["朱自清"], note:"封面", source:"导入 · 车站背影", lineage:{src:"导入", srcHash:C.proj.lesson.hash, edited:false}, status:"synced"},
+    {no:2, layout:"bullets", title:"今天要解决的三个问题", kicker:"学习目标", bullets:["作者写了几次背影","哪一次最打动你","为什么他不直接流泪"], note:"导入", source:"导入 · 车站背影", lineage:{src:"导入", srcHash:C.proj.lesson.hash, edited:false}, status:"synced"},
+    {no:3, layout:"bullets", title:"「攀」一个字读出心思", kicker:"品读", bullets:["腿脚不好还亲自来","用上半身去够","我这时才懂"], note:"核心", source:"品读 · 四次买橘子", lineage:{src:"品读", srcHash:C.proj.lesson.hash, edited:false}, status:"stale"},
+    {no:4, layout:"end", title:"留给你的问题", kicker:"课后", bullets:["基础：朗读买橘子段落","提升：找另一处细节","拓展：写我家的背影"], note:"收束", source:"小结 · 开放结尾", lineage:{src:"小结", srcHash:C.proj.lesson.hash, edited:false}, status:"synced"}
+  ];
+  C.proj.script = [
+    {page:1, title:"背影", minutes:2, board:"背影", says:[{who:"T", text:"同学们好，今天这节课，我们先不看课文，先听一段声音。"},{who:"A", text:"播放车站月台音频 8 秒，学生闭眼"}]},
+    {page:3, title:"品读", minutes:8, board:"攀", says:[{who:"T", text:"四个人围在一起，把你们组那句的动作词圈出来。"},{who:"S", text:"老师，「攀」是不是比「爬」更用力？"},{who:"T", text:"问得好，先不评价，把它记在黑板上。"}]}
+  ];
+  C.proj.review = { total:82, at:new Date().toISOString(),
+    roles:[
+      {role:"student", name:"学生视角", icon:"🧑‍🎓", weight:1.2, score:80, comment:"整体能跟上，P2 单元位置那页我不知道为什么要看。", stuck:["P2"], confused:["潜台词"], fake:[], advice:["删掉 P2"]},
+      {role:"peer", name:"教研员", icon:"👩‍🏫", weight:1.0, score:86, comment:"环节逻辑完整，但两次对比 12 分钟偏紧。", stuck:[], confused:[], fake:[], advice:["压缩对比环节"]},
+      {role:"inspector", name:"督导", icon:"📝", weight:1.0, score:85, comment:"目标均可回溯课标，无超纲。", stuck:[], confused:[], fake:[], advice:["加家庭情况提示"]}
+    ],
+    arbiter:{ total:82,
+      consensus:[{text:"P2「今天要解决的三个问题」比「单元位置」更适合学生", evidence:"三评委一致"}],
+      divergence:[{topic:"朗读要不要配乐", positions:{student:"不要", peer:"要", inspector:"无意见"}, lean:"不配乐", reason:"补充要求不要过度煽情", final:"由教师决定"}] } };
+  C.proj.checks = C.fullCheck(C.proj.lesson, C.proj.input);
+  C.proj.dirty = false;
+
+  TD.UI.step = window.__step;
+  TD.UI.renderSteps();
+  TD.UI.goto(window.__step);
+  TD.UI.stamp();
+});
+</script>
+</body>
+</html>
